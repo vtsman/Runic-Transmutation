@@ -5,7 +5,7 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.Item;
 
 public class dust extends Item{
-	public static String[] names = {"Chalky", "Enriched", "Pulsating", "Infused", "Darkened", "Mysterious", "Sorcerer", "Forged", "Enlightened"};
+	public static String[] names = {"Chalky", "Enriched", "Pulsating", "Infused", "Darkened", "Mysterious", "Sorcerer's", "Forged", "Enlightened"};
 	public static String[] tex = {"chalk", "enriched", "pulsating", "infused", "darkened", "mysterious", "sorcerer", "forged", "enlightened"};
 	public int i;
 	public dust(int par1, int i) {

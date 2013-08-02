@@ -13,6 +13,7 @@ public class modItems {
 	public static dust sorce = new dust(706, 6);
 	public static dust forge = new dust(707, 7);
 	public static dust enlight = new dust(708, 8);
+	public static Item dull = new dullStone(709);
 	public static void init(){
 		LanguageRegistry.addName(chalk, dust.names[0] + " Dust");
 		LanguageRegistry.addName(enriched, dust.names[1] + " Dust");
@@ -23,5 +24,6 @@ public class modItems {
 		LanguageRegistry.addName(sorce, dust.names[6] + " Dust");
 		LanguageRegistry.addName(forge, dust.names[7] + " Dust");
 		LanguageRegistry.addName(enlight, dust.names[8] + " Dust");
+		LanguageRegistry.addName(dull, "Dull Stone");
 	}
 }
