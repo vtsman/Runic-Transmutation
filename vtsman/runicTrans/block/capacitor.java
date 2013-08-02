@@ -12,6 +12,7 @@ public class capacitor extends Block{
 	public capacitor(int par1, Material par2Material) {
 		super(par1, par2Material);
 		this.setUnlocalizedName("capacitorRune");
+		this.setLightValue(.8f);
 		// TODO Auto-generated constructor stub
 	}
 	@Override

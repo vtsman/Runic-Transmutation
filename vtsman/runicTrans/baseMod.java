@@ -3,6 +3,7 @@ package vtsman.runicTrans;
 import vtsman.runicTrans.block.modBlocks;
 import vtsman.runicTrans.client.ClientPacketHandler;
 import vtsman.runicTrans.items.modItems;
+import vtsman.runicTrans.transmute.transmuteManager;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -37,7 +38,11 @@ public static commonProxy proxy;
 
 @Init
 public void Init(FMLInitializationEvent event){ //Your main initialization method
-proxy.registerRenderInformation();
+	transmuteManager.add(new ItemStack(Block.cobblestone, 1), 4);
+	transmuteManager.add(new ItemStack(Block.dirt, 1), 4);
+	System.out.println("trans");
+	System.out.println(transmuteManager.getNext(new ItemStack(Block.dirt, 1)));
+	proxy.registerRenderInformation();
 recipes.init();
 modItems.init();
 modBlocks.init();

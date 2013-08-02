@@ -1,6 +1,7 @@
 package vtsman.runicTrans.items;
 
 import vtsman.runicTrans.TE.capacitorTE;
+import vtsman.runicTrans.TE.transRuneTE;
 import vtsman.runicTrans.block.capacitor;
 import vtsman.runicTrans.block.modBlocks;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -25,15 +26,14 @@ public class intelStone extends Item{
 	@Override
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ)
 	{
-		System.out.println(1);
 		if(!world.isRemote){
-			System.out.println(2);
 			TileEntity te = world.getBlockTileEntity(x, y, z);
-			System.out.println(te == null);
 			if(te instanceof capacitorTE){
-				System.out.println(3);
 				player.addChatMessage("¤eThe stone seems to whipser to you");
 				player.addChatMessage("¤b¤oThere is " + ((capacitorTE)te).RE + " energy");
+			}
+			if(te instanceof transRuneTE){
+				player.addChatMessage(String.valueOf(((transRuneTE)te).items.size()));
 			}
 		}
 		return true;
