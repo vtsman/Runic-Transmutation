@@ -29,8 +29,8 @@ public class intelStone extends Item{
 		if(!world.isRemote){
 			TileEntity te = world.getBlockTileEntity(x, y, z);
 			if(te instanceof capacitorTE){
-				player.addChatMessage("¤eThe stone seems to whipser to you");
-				player.addChatMessage("¤b¤oThere is " + ((capacitorTE)te).RE + " energy");
+				player.addChatMessage("Â§eThe stone seems to whipser to you");
+				player.addChatMessage("Â§bÂ§oThere is " + ((capacitorTE)te).RE + " energy");
 			}
 			if(te instanceof transRuneTE){
 				player.addChatMessage(String.valueOf(((transRuneTE)te).items.size()));

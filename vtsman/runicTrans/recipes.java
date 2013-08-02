@@ -17,5 +17,6 @@ public static void init(){
 	GameRegistry.addShapedRecipe(new ItemStack(modItems.enlight, 1), "ggg", "bfb", "ggg", 'g', Item.glowstone, 'f', modItems.forge, 'b', Item.book);
 	GameRegistry.addShapedRecipe(new ItemStack(modItems.forge, 1), " a ", "cpc", " a ", 'a', Block.anvil, 'c', Block.workbench, 'p', modItems.pulse);
 	GameRegistry.addShapedRecipe(new ItemStack(modItems.eStone, 1), " e ", "ede", " e ", 'd', Item.diamond, 'e', modItems.enlight);
+	GameRegistry.addShapedRecipe(new ItemStack(modBlocks.chargeNode, 1), " e ", " o ", "oeo", 'o', Block.obsidian, 'e', modItems.enriched);
 }
 }

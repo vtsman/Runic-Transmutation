@@ -41,7 +41,7 @@ public void Init(FMLInitializationEvent event){ //Your main initialization metho
 	transmuteManager.add(new ItemStack(Block.cobblestone, 1), 4);
 	transmuteManager.add(new ItemStack(Block.dirt, 1), 4);
 	System.out.println("trans");
-	System.out.println(transmuteManager.getNext(new ItemStack(Block.dirt, 1)));
+	System.out.println(transmuteManager.getNext(new ItemStack(Block.dirt, 4)).itemID);
 	proxy.registerRenderInformation();
 recipes.init();
 modItems.init();
