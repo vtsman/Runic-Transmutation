@@ -14,5 +14,8 @@ public static void init(){
 	GameRegistry.addShapedRecipe(new ItemStack(modItems.pulse, 1), " r ", "rer", " r ", 'r', Item.redstone, 'e', modItems.enriched);
 	GameRegistry.addShapedRecipe(new ItemStack(modItems.dull, 1), "ioi", "idi", "ioi", 'i', Item.ingotIron, 'o', Block.obsidian, 'd', modItems.infused);
 	GameRegistry.addShapedRecipe(new ItemStack(modBlocks.cap, 1), "gig", "did", "gig", 'g', Block.glowStone, 'i', modItems.infused, 'd', Item.diamond);
+	GameRegistry.addShapedRecipe(new ItemStack(modItems.enlight, 1), "ggg", "bfb", "ggg", 'g', Item.glowstone, 'f', modItems.forge, 'b', Item.book);
+	GameRegistry.addShapedRecipe(new ItemStack(modItems.forge, 1), " a ", "cpc", " a ", 'a', Block.anvil, 'c', Block.workbench, 'p', modItems.pulse);
+	GameRegistry.addShapedRecipe(new ItemStack(modItems.eStone, 1), " e ", "ede", " e ", 'd', Item.diamond, 'e', modItems.enlight);
 }
 }
