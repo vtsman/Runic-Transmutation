@@ -1,6 +1,7 @@
 package vtsman.runicTrans;
 
 import vtsman.runicTrans.client.ClientPacketHandler;
+import vtsman.runicTrans.items.modItems;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -36,12 +37,13 @@ public static commonProxy proxy;
 @Init
 public void Init(FMLInitializationEvent event){ //Your main initialization method
 proxy.registerRenderInformation();
-//nodeRecipeManager.init();
+recipes.init();
+tabs.init();
 }
 
 @PostInit
 public static void postInit(FMLPostInitializationEvent event){
-	
+	modItems.init();
 }
 
 }
