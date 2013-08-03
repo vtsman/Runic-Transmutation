@@ -3,11 +3,12 @@ package vtsman.runicTrans.block;
 import java.util.ArrayList;
 import java.util.Random;
 
-import vtsman.runicTrans.TE.IRune;
 import vtsman.runicTrans.TE.capacitorTE;
+import vtsman.runicTrans.TE.chargeNode;
 import vtsman.runicTrans.TE.transRuneTE;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.passive.EntityAnimal;
@@ -15,42 +16,61 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 
-public class rune extends Block{
-	IRune rune;
+public class rune extends Block {
+
 	public rune(int par1, Material par2Material) {
 		super(par1, par2Material);
 		// TODO Auto-generated constructor stub
 	}
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4)
+
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World,
+			int par2, int par3, int par4) {
+		return null;
+	}
+
+	public void onEntityCollidedWithBlock(World world, int par2, int par3,
+			int par4, Entity e) {
+		transRuneTE rune = (transRuneTE) world.getBlockTileEntity(par2, par3, par4);
+		if (!world.isRemote) {
+			rune.suck(e);
+		}
+	}
+	public int quantityDropped(int par1, Random par2Random)
     {
-        return null;
+		return 0;
     }
-	public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity e)
-    {
-        if (!par1World.isRemote)
-        {
-        	if(e instanceof EntityItem){
-        		rune.items.add((EntityItem)e);
-        	}
-        	if(e instanceof EntityAnimal){
-        		rune.animals.add((EntityAnimal)e);
-        	}
-        }
-    }
+	public int getRenderType() {
+		return -1;
+	}
+
+	public void registerIcons(IconRegister ir) {
+		this.blockIcon = Block.obsidian.getIcon(0, 0);
+	}
+
+	public boolean isOpaqueCube() {
+		return false;
+	}
+
 	@Override
-	public boolean hasTileEntity(int m){
+	public boolean hasTileEntity(int metadata) {
 		return true;
 	}
+
+	/**
+	 * If this block doesn't render as an ordinary block it will return False
+	 * (examples: signs, buttons, stairs, etc)
+	 */
+	public boolean renderAsNormalBlock() {
+		return false;
+	}
+
 	@Override
-	public TileEntity createTileEntity(World world, int meta)
-    {
-		if(meta != 7){
+	public TileEntity createTileEntity(World world, int meta) {
+		if (meta < 7) {
 			transRuneTE t = new transRuneTE();
-			this.rune = t;
-		return t;
-		}
-		else{
+			return t;
+		} else {
 			return null;
 		}
-    }
+	}
 }

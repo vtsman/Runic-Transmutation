@@ -11,9 +11,9 @@ import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-public class commonProxy{
+public class commonProxy {
 
-	
-	public void registerRenderInformation(){}
+	public void registerRenderInformation() {
+	}
 
 }

@@ -3,6 +3,7 @@ package vtsman.runicTrans;
 import vtsman.runicTrans.block.modBlocks;
 import vtsman.runicTrans.client.ClientPacketHandler;
 import vtsman.runicTrans.items.modItems;
+import vtsman.runicTrans.transmute.transInit;
 import vtsman.runicTrans.transmute.transmuteManager;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
@@ -26,32 +27,40 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-@NetworkMod(clientSideRequired=true,serverSideRequired=false, //Whether client side and server side are needed
-clientPacketHandlerSpec = @SidedPacketHandler(channels = {"RuneTrans TE"}, packetHandler = ClientPacketHandler.class), //For clientside packet handling
-serverPacketHandlerSpec = @SidedPacketHandler(channels = {"RuneTrans Server"}, packetHandler = ServerPacketHandler.class)) //For serverside packet handling
-@Mod(modid="runeTrans",name="Runic Transmutation",version="0.0.0")
-public class baseMod { //The class file
-@Instance("runeTrans") //The instance, this is very important later on
-public static baseMod instance = new baseMod();
-@SidedProxy(clientSide = "vtsman.runicTrans.client.clientProxy", serverSide = "vtsman.runicTrans.commonProxy")
-public static commonProxy proxy;
+@NetworkMod(clientSideRequired = true, serverSideRequired = false, // Whether
+																	// client
+																	// side and
+																	// server
+																	// side are
+																	// needed
+clientPacketHandlerSpec = @SidedPacketHandler(channels = { "RuneTrans TE" }, packetHandler = ClientPacketHandler.class), // For
+																															// clientside
+																															// packet
+																															// handling
+serverPacketHandlerSpec = @SidedPacketHandler(channels = { "RuneTrans Server" }, packetHandler = ServerPacketHandler.class))
+// For serverside packet handling
+@Mod(modid = "runeTrans", name = "Runic Transmutation", version = "0.0.0")
+public class baseMod { // The class file
+	@Instance("runeTrans")
+	// The instance, this is very important later on
+	public static baseMod instance = new baseMod();
+	@SidedProxy(clientSide = "vtsman.runicTrans.client.clientProxy", serverSide = "vtsman.runicTrans.commonProxy")
+	public static commonProxy proxy;
 
-@Init
-public void Init(FMLInitializationEvent event){ //Your main initialization method
-	transmuteManager.add(new ItemStack(Block.cobblestone, 1), 4);
-	transmuteManager.add(new ItemStack(Block.dirt, 1), 4);
-	System.out.println("trans");
-	System.out.println(transmuteManager.getNext(new ItemStack(Block.dirt, 4)).itemID);
-	proxy.registerRenderInformation();
-recipes.init();
-modItems.init();
-modBlocks.init();
-tabs.init();
-}
+	@Init
+	public void Init(FMLInitializationEvent event) { // Your main initialization
+														// method
+		transInit.init();
+		proxy.registerRenderInformation();
+		tabs.init();
+		modItems.init();
+		modBlocks.init();
+		recipes.init();
+	}
 
-@PostInit
-public static void postInit(FMLPostInitializationEvent event){
+	@PostInit
+	public static void postInit(FMLPostInitializationEvent event) {
 
-}
+	}
 
 }

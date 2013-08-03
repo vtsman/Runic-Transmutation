@@ -3,6 +3,7 @@ package vtsman.runicTrans;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.CraftingManager;
 import vtsman.runicTrans.block.modBlocks;
 import vtsman.runicTrans.items.modItems;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -18,5 +19,6 @@ public static void init(){
 	GameRegistry.addShapedRecipe(new ItemStack(modItems.forge, 1), " a ", "cpc", " a ", 'a', Block.anvil, 'c', Block.workbench, 'p', modItems.pulse);
 	GameRegistry.addShapedRecipe(new ItemStack(modItems.eStone, 1), " e ", "ede", " e ", 'd', Item.diamond, 'e', modItems.enlight);
 	GameRegistry.addShapedRecipe(new ItemStack(modBlocks.chargeNode, 1), " e ", " o ", "oeo", 'o', Block.obsidian, 'e', modItems.enriched);
+	CraftingManager.getInstance().getRecipeList().add(new stoneCrafting());
 }
 }

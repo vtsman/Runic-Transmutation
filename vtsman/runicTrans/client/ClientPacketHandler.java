@@ -22,37 +22,39 @@ import cpw.mods.fml.common.network.Player;
 import cpw.mods.fml.relauncher.*;
 
 @SideOnly(Side.CLIENT)
-public class ClientPacketHandler implements IPacketHandler{
+public class ClientPacketHandler implements IPacketHandler {
 
 	@Override
-public void onPacketData(INetworkManager manager, Packet250CustomPayload payload, Player player){
-DataInputStream data = new DataInputStream(new ByteArrayInputStream(payload.data));
-World world = ((EntityPlayer)player).worldObj;
-if(payload.channel == "MineModus TE"){
-	System.out.println("Packet Recieved");
-NBTTagCompound tag = null;
-short length;
-try {
-	length = data.readShort();
-	byte[] compressed = new byte[length];
-	data.readFully(compressed);
-	tag = CompressedStreamTools.decompress(compressed);
-	System.out.println("Tag decompressed");
-} catch (IOException e) {
-	// TODO Auto-generated catch block
-	e.printStackTrace();
-}
-if(tag != null){
-if(tag.hasKey("x") && tag.hasKey("y") && tag.hasKey("z")){
-	int x = tag.getInteger("x");
-	int y = tag.getInteger("y");
-	int z = tag.getInteger("z");
-	TileEntity te = world.getBlockTileEntity(x, y, z);
-	if(te != null){
-	te.readFromNBT(tag);
+	public void onPacketData(INetworkManager manager,
+			Packet250CustomPayload payload, Player player) {
+		DataInputStream data = new DataInputStream(new ByteArrayInputStream(
+				payload.data));
+		World world = ((EntityPlayer) player).worldObj;
+		if (payload.channel == "MineModus TE") {
+			System.out.println("Packet Recieved");
+			NBTTagCompound tag = null;
+			short length;
+			try {
+				length = data.readShort();
+				byte[] compressed = new byte[length];
+				data.readFully(compressed);
+				tag = CompressedStreamTools.decompress(compressed);
+				System.out.println("Tag decompressed");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			if (tag != null) {
+				if (tag.hasKey("x") && tag.hasKey("y") && tag.hasKey("z")) {
+					int x = tag.getInteger("x");
+					int y = tag.getInteger("y");
+					int z = tag.getInteger("z");
+					TileEntity te = world.getBlockTileEntity(x, y, z);
+					if (te != null) {
+						te.readFromNBT(tag);
+					}
+				}
+			}
+		}
 	}
-}
-}
-}
-}
 }

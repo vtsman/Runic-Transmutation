@@ -14,10 +14,20 @@ public class modItems {
 	public static dust sorce = new dust(706, 6);
 	public static dust forge = new dust(707, 7);
 	public static dust enlight = new dust(708, 8);
-	public static Item dull = new dullStone(709).setCreativeTab(tabs.tabRune).setUnlocalizedName("dullStone");
-	public static Item eStone = new intelStone(710).setCreativeTab(tabs.tabRune).setUnlocalizedName("intelStone");
-	public static Item debug = new debug(711).setCreativeTab(tabs.tabRune).setUnlocalizedName("debug");
-	public static void init(){
+	public static Item dull = new dullStone(709).setCreativeTab(tabs.tabRune)
+			.setUnlocalizedName("dullStone");
+	public static Item eStone = new intelStone(710)
+			.setCreativeTab(tabs.tabRune).setUnlocalizedName("intelStone");
+	public static Item debug = new debug(711).setCreativeTab(tabs.tabRune)
+			.setUnlocalizedName("debug");
+	public static Item transWand = new transmutationWand(712).setCreativeTab(
+			tabs.tabRune).setUnlocalizedName("transWand");
+	public static Item iStone = new infusedStone(713).setCreativeTab(
+			tabs.tabRune).setUnlocalizedName("istone");
+	public static Item fWand = new fireRod(714).setCreativeTab(
+			tabs.tabRune).setUnlocalizedName("fwand");
+
+	public static void init() {
 		LanguageRegistry.addName(chalk, dust.names[0] + " Dust");
 		LanguageRegistry.addName(enriched, dust.names[1] + " Dust");
 		LanguageRegistry.addName(pulse, dust.names[2] + " Dust");
@@ -30,5 +40,8 @@ public class modItems {
 		LanguageRegistry.addName(dull, "Dull Stone");
 		LanguageRegistry.addName(eStone, "Enlightened Stone");
 		LanguageRegistry.addName(debug, "Debug Tool");
+		LanguageRegistry.addName(transWand, "Transmutation Wand");
+		LanguageRegistry.addName(iStone, "Infused Stone");
+		LanguageRegistry.addName(fWand, "Fire Rod");
 	}
 }

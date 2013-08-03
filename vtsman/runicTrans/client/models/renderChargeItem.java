@@ -6,27 +6,29 @@ import net.minecraftforge.client.IItemRenderer;
 
 public class renderChargeItem implements IItemRenderer {
 
-private chargeNode Model;
+	private chargeNode Model;
 
-public renderChargeItem() {
+	public renderChargeItem() {
 
-Model = new chargeNode();
-}
+		Model = new chargeNode();
+	}
 
-@Override
-public boolean handleRenderType(ItemStack item, ItemRenderType type) {
+	@Override
+	public boolean handleRenderType(ItemStack item, ItemRenderType type) {
 
-return true;
-}
+		return true;
+	}
 
-@Override
-public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item, ItemRendererHelper helper) {
+	@Override
+	public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item,
+			ItemRendererHelper helper) {
 
-return true;
-}
+		return true;
+	}
 
-@Override
-public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
-TileEntityRenderer.instance.renderTileEntityAt(new vtsman.runicTrans.TE.chargeNode(), 0.0D, 0.0D, 0.0D, 0.0F);
-}
+	@Override
+	public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
+		TileEntityRenderer.instance.renderTileEntityAt(
+				new vtsman.runicTrans.TE.chargeNode(), 0.0D, 0.0D, 0.0D, 0.0F);
+	}
 }

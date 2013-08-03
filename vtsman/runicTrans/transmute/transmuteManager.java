@@ -4,43 +4,92 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import vtsman.runicTrans.stackUtils;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class transmuteManager {
-	public static HashMap<Integer,Integer> e = new HashMap<Integer,Integer>();
-	public static HashMap<Integer, ArrayList<Integer>> REinv = new HashMap<Integer, ArrayList<Integer>>();
-public static ItemStack getNext(ItemStack i){
-	System.out.println(REinv.get(4).get(1));
-	System.out.println("RE: " + e.get(i.itemID));
-	if(e.containsKey(i.itemID)){
-		int re = e.get(i.itemID);
-		ArrayList<Integer> array = REinv.get(re);
-		for(int j = 0; j < REinv.get(re).size(); j++){
-			if(array.get(j).intValue() == i.itemID){
-				System.out.println("here");
-				int k = 0;
-				if(j == array.size() - 1)k = array.get(0);
-				else k = array.get(j + 1);
-				if(Block.blocksList[k] != null)return new ItemStack(Block.blocksList[k], 1);
-				return new ItemStack(Item.itemsList[k], 1);
+	public static HashMap<Integer, Integer[]> RE = new HashMap<Integer, Integer[]>();
+	public static HashMap<Integer, List<ItemStack>> REinv = new HashMap<Integer, List<ItemStack>>();
+
+	public static ItemStack getNext(ItemStack i) {
+		int re = getEnergy(i); // Gets Energy of item
+		if (REinv.containsKey(re)) {
+			List<ItemStack> list = REinv.get(re);
+			if (list != null) {
+				// Everything's OK?
+				for (int j = 0; j < list.size(); j++) {
+					if (i.itemID == list.get(j).itemID) {
+						if (i.getItemDamage() == list.get(j).getItemDamage()) {
+
+							// Found it!
+							if (j == list.size() - 1) {
+								return list.get(0);
+							}
+							return list.get(j + 1);
+							// Returns next entry
+						}
+					}
+				}
 			}
-			System.out.println(array.get(j).intValue() + "!=" + i.itemID);
 		}
+		return null; // Nothing found
 	}
-	return(null);
-}
-public static void add(ItemStack st, int i){
-	ItemStack s = st;
-	 e.put(st.itemID, i);
-	 if(REinv.containsKey(i)){
-		 REinv.get(i).add(st.itemID);
-	 }
-	 else{
-		ArrayList<Integer> l = new ArrayList<Integer>();
-		l.add(st.itemID);
-		REinv.put(i, l);
-	 }
-}
+
+	public static ItemStack getNextBlock(ItemStack i) {
+		int re = getEnergy(i); // Gets Energy of item
+		if (REinv.containsKey(re)) {
+			List<ItemStack> list = REinv.get(re);
+			if (list != null) {
+				// Everything's OK?
+				for (int j = 0; j < list.size(); j++) {
+					if (i.itemID == list.get(j).itemID) {
+
+						if (i.getItemDamage() == list.get(j).getItemDamage()) {
+							// Found it!
+
+							if (j == list.size() - 1) {
+								if (list.get(0).itemID < Block.blocksList.length) {
+									if (Block.blocksList[list.get(0).itemID] != null) {
+										return list.get(0);
+									}
+								}
+							}
+							if (list.get(j + 1).itemID < Block.blocksList.length) {
+								if (Block.blocksList[list.get(j + 1).itemID] != null) {
+									return list.get(j + 1);
+								}
+							}
+						}
+						// Returns next entry
+					}
+				}
+			}
+		}
+		return null; // Nothing found
+	}
+
+	public static void add(int i, ItemStack s) {
+		if (!RE.containsKey(s.itemID)) {
+			RE.put(s.itemID, new Integer[16]);
+			for (int x = 0; x < 16; x++) {
+				RE.get(s.itemID)[x] = 0;
+			}
+		}
+		RE.get(s.itemID)[s.getItemDamage()] = i;
+		if (!REinv.containsKey(i)) {
+			REinv.put(i, new ArrayList<ItemStack>());
+		}
+		REinv.get(i).add(s);
+	}
+
+	public static int getEnergy(ItemStack s) {
+		if(s != null){
+		if (RE.containsKey(s.itemID))
+			return RE.get(s.itemID)[s.getItemDamage()];
+		}
+		return 0;
+	}
 }

@@ -7,12 +7,14 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class tabs {
 	public static CreativeTabs tabRune = new CreativeTabs("tabRune") {
-	    public ItemStack getIconItemStack() {
-	    	ItemStack stack = new ItemStack(modItems.chalk, 1, 0);
-	    	return stack;
-	}
+		public ItemStack getIconItemStack() {
+			ItemStack stack = new ItemStack(modItems.chalk, 1, 0);
+			return stack;
+		}
 	};
-	public static void init(){
-		LanguageRegistry.instance().addStringLocalization("itemGroup.tabRune", "en_US", "Runic Transmutation");
+
+	public static void init() {
+		LanguageRegistry.instance().addStringLocalization("itemGroup.tabRune",
+				"en_US", "Runic Transmutation");
 	}
 }
