@@ -5,6 +5,7 @@ import java.util.Random;
 
 import vtsman.runicTrans.TE.capacitorTE;
 import vtsman.runicTrans.TE.chargeNode;
+import vtsman.runicTrans.TE.findRune;
 import vtsman.runicTrans.TE.transRuneTE;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -20,6 +21,8 @@ public class rune extends Block {
 
 	public rune(int par1, Material par2Material) {
 		super(par1, par2Material);
+		float f = 1f / 16f;
+		 this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, f, 1.0F);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -30,9 +33,12 @@ public class rune extends Block {
 
 	public void onEntityCollidedWithBlock(World world, int par2, int par3,
 			int par4, Entity e) {
-		transRuneTE rune = (transRuneTE) world.getBlockTileEntity(par2, par3, par4);
+		TileEntity rune = world.getBlockTileEntity(par2, par3, par4);
 		if (!world.isRemote) {
-			rune.suck(e);
+			if(rune instanceof transRuneTE)
+			((transRuneTE)rune).suck(e);
+			if(rune instanceof findRune)
+				((findRune) rune).accept(e);
 		}
 	}
 	public int quantityDropped(int par1, Random par2Random)
@@ -70,7 +76,7 @@ public class rune extends Block {
 			transRuneTE t = new transRuneTE();
 			return t;
 		} else {
-			return null;
+			return new findRune();
 		}
 	}
 }

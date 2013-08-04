@@ -21,6 +21,9 @@ public class clientProxy extends commonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(
 				vtsman.runicTrans.TE.transRuneTE.class,
 				new vtsman.runicTrans.client.models.renderRune());
+		ClientRegistry.bindTileEntitySpecialRenderer(
+				vtsman.runicTrans.TE.findRune.class,
+				new vtsman.runicTrans.client.models.smallTE());
 		MinecraftForgeClient.registerItemRenderer(modBlocks.chargeNode.blockID,
 				new renderChargeItem());
 

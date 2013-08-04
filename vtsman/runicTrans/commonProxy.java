@@ -1,5 +1,8 @@
 package vtsman.runicTrans;
 
+import vtsman.runicTrans.TE.capacitorTE;
+import vtsman.runicTrans.TE.transRuneTE;
+import vtsman.runicTrans.transmute.transInit;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -16,4 +19,16 @@ public class commonProxy {
 	public void registerRenderInformation() {
 	}
 
+	public void register() {
+		recipes.init();
+		transInit.init();
+
+	}
+	public void registerTE(){
+		GameRegistry.registerTileEntity(capacitorTE.class, "Runic Capacitor");
+		GameRegistry.registerTileEntity(vtsman.runicTrans.TE.chargeNode.class,
+				"Charge Node");
+		GameRegistry
+				.registerTileEntity(transRuneTE.class, "Transmutation Rune");
+	}
 }

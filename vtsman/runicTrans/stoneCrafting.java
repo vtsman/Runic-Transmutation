@@ -22,9 +22,9 @@ int itemcount = 0;
 public stoneCrafting(){
 }
 	@Override
-	public boolean matches(InventoryCrafting inventorycrafting, World world) {
-		System.out.println(this.getCraftingResult(inventorycrafting) != null);
-		return true;
+	public boolean matches(InventoryCrafting i, World world) {
+		System.out.println(i != null);
+		return this.getCraftingResult(i) != null;
 	}
 	@Override
 	public ItemStack getCraftingResult(InventoryCrafting inventorycrafting) {
@@ -52,7 +52,7 @@ public stoneCrafting(){
 		if(twoItems && hasStone){
 			System.out.println("here");
 			out = transmuteManager.getNext(Transmuting);
-		return transmuteManager.getNext(Transmuting);
+		return out;
 		}
 		out = null;
 		return null;
@@ -60,7 +60,7 @@ public stoneCrafting(){
 	@Override
 	public int getRecipeSize() {
 		// TODO Auto-generated method stub
-		return 2;
+		return 9;
 	}
 	@Override
 	public ItemStack getRecipeOutput() {

@@ -57,7 +57,7 @@ public class fireRod extends IChargable {
 							}*/
 						}
 					}
-					else{
+					/*else{
 						int slot = 100;
 						for(int i = 0; i < 36; i++){
 							if(player.inventory.mainInventory[i] != null){
@@ -80,16 +80,16 @@ public class fireRod extends IChargable {
 							case 4: coords[0]--;
 							case 5: coords[0]++;
 							}
-							/*if(canPlaceBlockAt(world, coords[0], coords[1], coords[2])){
+							if(canPlaceBlockAt(world, coords[0], coords[1], coords[2])){
 								world.setBlock(coords[0], coords[1], coords[2], Block.torchWood.blockID);
 								onBlockPlaced
-							}*/
+							}
 							if(canPlaceBlockAt(world, x, y , z)){
 								world.setBlock(coords[0], coords[1], coords[2], Block.torchWood.blockID);
 								onBlockAdded(world, coords[0], coords[1], coords[2]);
 							}
 						}
-					}
+					}*/
 				}
 			}
 		}

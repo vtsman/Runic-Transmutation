@@ -1,12 +1,14 @@
 package vtsman.runicTrans;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import vtsman.runicTrans.block.modBlocks;
 import vtsman.runicTrans.items.modItems;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
 
 public class recipes {
 public static void init(){

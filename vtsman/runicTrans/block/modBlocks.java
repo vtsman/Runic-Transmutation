@@ -18,11 +18,6 @@ public class modBlocks {
 			.setCreativeTab(tabs.tabRune);
 
 	public static void init() {
-		GameRegistry.registerTileEntity(capacitorTE.class, "Runic Capacitor");
-		GameRegistry.registerTileEntity(vtsman.runicTrans.TE.chargeNode.class,
-				"Charge Node");
-		GameRegistry
-				.registerTileEntity(transRuneTE.class, "Transmutation Rune");
 		GameRegistry.registerBlock(cap, "capacitor");
 		GameRegistry.registerBlock(rune, "transmutation rune");
 		MinecraftForge.setBlockHarvestLevel(cap, "Pickaxe", 2);

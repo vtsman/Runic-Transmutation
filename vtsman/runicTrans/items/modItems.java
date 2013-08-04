@@ -26,6 +26,10 @@ public class modItems {
 			tabs.tabRune).setUnlocalizedName("istone");
 	public static Item fWand = new fireRod(714).setCreativeTab(
 			tabs.tabRune).setUnlocalizedName("fwand");
+	public static Item fGem = new fireGem(715).setCreativeTab(
+			tabs.tabRune).setUnlocalizedName("fstone");
+	public static Item rStone = new runeStone(716).setCreativeTab(
+			tabs.tabRune).setUnlocalizedName("rstone");
 
 	public static void init() {
 		LanguageRegistry.addName(chalk, dust.names[0] + " Dust");
@@ -43,5 +47,7 @@ public class modItems {
 		LanguageRegistry.addName(transWand, "Transmutation Wand");
 		LanguageRegistry.addName(iStone, "Infused Stone");
 		LanguageRegistry.addName(fWand, "Fire Rod");
+		LanguageRegistry.addName(rStone, "Rune stone");
+		LanguageRegistry.addName(fGem, "Fire Gem");
 	}
 }

@@ -44,6 +44,23 @@ public class transRuneTE extends TileEntity {
 		}
 		return null;
 	}
+	public findRune getfind() {
+		for (int i = -9; i <= 9; i++) {
+			for (int j = -9; j <= 9; j++) {
+				for (int k = -9; k <= 9; k++) {
+					TileEntity t = this.worldObj.getBlockTileEntity(this.xCoord
+							+ i, this.yCoord + j, this.zCoord + k);
+					if (t != null) {
+						if (t instanceof findRune) {
+							System.out.println("found");
+							return (findRune) t;
+						}
+					}
+				}
+			}
+		}
+		return null;
+	}
 
 	public boolean suck(Entity e) {
 		int meta = this.worldObj.getBlockMetadata(this.xCoord, this.yCoord,
