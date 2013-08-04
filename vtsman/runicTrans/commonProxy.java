@@ -18,17 +18,4 @@ public class commonProxy {
 
 	public void registerRenderInformation() {
 	}
-
-	public void register() {
-		recipes.init();
-		transInit.init();
-
-	}
-	public void registerTE(){
-		GameRegistry.registerTileEntity(capacitorTE.class, "Runic Capacitor");
-		GameRegistry.registerTileEntity(vtsman.runicTrans.TE.chargeNode.class,
-				"Charge Node");
-		GameRegistry
-				.registerTileEntity(transRuneTE.class, "Transmutation Rune");
-	}
 }

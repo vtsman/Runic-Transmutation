@@ -7,6 +7,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.MinecraftForge;
 
 public class modBlocks {
@@ -18,6 +19,8 @@ public class modBlocks {
 			.setCreativeTab(tabs.tabRune);
 
 	public static void init() {
+		
+		
 		GameRegistry.registerBlock(cap, "capacitor");
 		GameRegistry.registerBlock(rune, "transmutation rune");
 		MinecraftForge.setBlockHarvestLevel(cap, "Pickaxe", 2);

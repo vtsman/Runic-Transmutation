@@ -27,7 +27,10 @@ public class capacitor extends Block {
 
 	@Override
 	public TileEntity createTileEntity(World world, int meta) {
+		if(!world.isRemote){
 		return new capacitorTE();
+		}
+		return null;
 	}
 	// todo add TE
 }

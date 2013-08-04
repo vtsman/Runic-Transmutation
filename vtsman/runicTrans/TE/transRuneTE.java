@@ -17,13 +17,15 @@ public class transRuneTE extends TileEntity {
 	public static double[] getMult = new double[] { .5d, 2d / 3d, 10d / 14d,
 			10d / 13d, .8d, .9d, 1d };
 	public static int[] getMax = new int[] { 4, 20, 30, 80, 160, 320, 0 };
-	capacitorTE tile;
-
+	public capacitorTE tile;
+	public findRune find;
 	@Override
 	public void updateEntity() {
 		if (!this.worldObj.isRemote) {
 			if (this.tile == null)
 				tile = getcap();
+			if (this.find== null)
+				find = getfind();
 		}
 	}
 

@@ -9,13 +9,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 
 public class findRune extends TileEntity{
-	Entity e;
+	public EntityItem e;
 	public void accept(Entity e){
 		if(e instanceof EntityItem){
 			ItemStack s = ((EntityItem)e).getEntityItem();
 			if(transmuteManager.RE.containsKey(s.itemID)){
 				if(e != null){
-				this.e = e;
+				this.e = (EntityItem) e;
 				return;
 				}
 			}

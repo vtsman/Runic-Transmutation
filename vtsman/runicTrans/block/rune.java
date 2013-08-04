@@ -7,12 +7,16 @@ import vtsman.runicTrans.TE.capacitorTE;
 import vtsman.runicTrans.TE.chargeNode;
 import vtsman.runicTrans.TE.findRune;
 import vtsman.runicTrans.TE.transRuneTE;
+import vtsman.runicTrans.items.modItems;
+import vtsman.runicTrans.transmute.transmuteManager;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
@@ -69,7 +73,27 @@ public class rune extends Block {
 	public boolean renderAsNormalBlock() {
 		return false;
 	}
-
+	public boolean onBlockActivated(World world, int x, int y, int z,
+			EntityPlayer player, int par6, float par7, float par8, float par9) {
+		if (!world.isRemote) {
+			if(world.getBlockMetadata(x, y, z) < 7){
+				transRuneTE te = (transRuneTE) world.getBlockTileEntity(x, y, z);
+				if(player.getHeldItem().itemID == modItems.rStone.itemID){
+					if(te.tile != null && te.find != null){
+						if(te.find.e != null){
+							ItemStack s = te.find.e.getEntityItem();
+							int i = transmuteManager.getEnergy(s);
+							if(te.tile.remove(i)){
+								EntityItem e = new EntityItem(world, (double)player.lastTickPosX, (double)player.lastTickPosY, (double)player.lastTickPosZ, s.copy());
+								world.spawnEntityInWorld(e);
+							}
+						}
+					}
+				}
+			}
+		}
+		return false;
+	}
 	@Override
 	public TileEntity createTileEntity(World world, int meta) {
 		if (meta < 7) {
