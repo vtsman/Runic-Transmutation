@@ -75,7 +75,7 @@ public class transRuneTE extends TileEntity {
 						int RE = transmuteManager.getEnergy(i);
 						if (RE > 0) {
 							if (getMax[meta] == 0) {
-								this.tile.add(RE);
+								this.tile.add(RE * i.stackSize);
 								e.setDead();
 								return true;
 							}

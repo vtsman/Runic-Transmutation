@@ -17,6 +17,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
+import vtsman.runicTrans.stackUtils;
 import vtsman.runicTrans.transmute.transmuteManager;
 
 public class fireRod extends IChargable {
@@ -43,18 +44,15 @@ public class fireRod extends IChargable {
 							.getSmeltingResult(s);
 					if (out != null) {
 						if (this.sub(10, stack)) {
-							if (Block.blocksList[out.itemID] != null) {
+							if (stackUtils.hasBlock(out)) {
 								world.setBlock(x, y, z, out.itemID,
 										out.getItemDamage(), 2);
 							}
-							/*else {
-								world.setBlock(x, y, z, -1);
-								EntityItem e = new EntityItem(world);
-								e.setEntityItemStack(out);
-								e.setPosition((double) x, (double) y,
-										(double) z);
+							else {
+								world.setBlockToAir(x, y, z);
+								EntityItem e = new EntityItem(world, (double)player.lastTickPosX, (double)player.lastTickPosY, (double)player.lastTickPosZ, out.copy());
 								world.spawnEntityInWorld(e);
-							}*/
+							}
 						}
 					}
 					/*else{

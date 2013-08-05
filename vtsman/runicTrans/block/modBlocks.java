@@ -1,5 +1,6 @@
 package vtsman.runicTrans.block;
 
+import vtsman.runicTrans.baseMod;
 import vtsman.runicTrans.tabs;
 import vtsman.runicTrans.TE.capacitorTE;
 import vtsman.runicTrans.TE.transRuneTE;
@@ -11,15 +12,16 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.MinecraftForge;
 
 public class modBlocks {
-	public static Block cap = new capacitor(750, Material.rock)
-			.setCreativeTab(tabs.tabRune);
-	public static Block chargeNode = new cNode(752, Material.rock)
-			.setCreativeTab(tabs.tabRune);
-	public static Block rune = new rune(751, Material.rock)
-			.setCreativeTab(tabs.tabRune);
+	public static Block cap;
+	public static Block chargeNode;
+	public static Block rune;
 
 	public static void init() {
-		
+		rune = new rune(baseMod.rune, Material.rock);
+		chargeNode = new cNode(baseMod.cNode, Material.rock)
+		.setCreativeTab(tabs.tabRune);
+		cap = new capacitor(baseMod.cap, Material.rock)
+		.setCreativeTab(tabs.tabRune);
 		
 		GameRegistry.registerBlock(cap, "capacitor");
 		GameRegistry.registerBlock(rune, "transmutation rune");

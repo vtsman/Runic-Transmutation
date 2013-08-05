@@ -33,6 +33,8 @@ public static void init(){
 	tWand.stackTagCompound = new NBTTagCompound();
 	tWand.stackTagCompound.setInteger("cap", 0);
 	GameRegistry.addShapedRecipe(tWand, " id", "ibi", "ei ", 'd', Item.diamond, 'i', modItems.infused, 'b', Item.blazeRod, 'e', Item.emerald);
-	//CraftingManager.getInstance().getRecipeList().add(new stoneCrafting());
+	GameRegistry.addShapedRecipe(new ItemStack(modItems.rStone, 1), "ci", "cc", "cc", 'c', Block.cobblestone, 'i', modItems.infused);
+	GameRegistry.addShapedRecipe(new ItemStack(modItems.tBall.itemID, 1, 0), " i ", "ici", " i ", 'i', modItems.infused, 'c', Item.pocketSundial);
+	//GameRegistry.addRecipe(new stoneCrafting());
 }
 }

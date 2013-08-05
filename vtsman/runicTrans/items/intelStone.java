@@ -34,10 +34,6 @@ public class intelStone extends Item {
 				player.addChatMessage("§b§oThere is " + ((capacitorTE) te).RE
 						+ " energy");
 			}
-			if (te instanceof transRuneTE) {
-				player.addChatMessage(String.valueOf(((transRuneTE) te).items
-						.size()));
-			}
 		}
 		return true;
 	}

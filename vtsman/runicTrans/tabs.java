@@ -15,6 +15,6 @@ public class tabs {
 
 	public static void init() {
 		LanguageRegistry.instance().addStringLocalization("itemGroup.tabRune",
-				"en_US", "Runic Transmutation");
+				"en_US", "Runic Alchemy");
 	}
 }

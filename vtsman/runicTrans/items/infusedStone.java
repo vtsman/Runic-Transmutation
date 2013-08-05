@@ -1,5 +1,6 @@
 package vtsman.runicTrans.items;
 
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -10,7 +11,7 @@ public class infusedStone extends Item{
 		// TODO Auto-generated constructor stub
 	}
 
-	/*@Override
+	@Override
 	    public boolean doesContainerItemLeaveCraftingGrid(ItemStack item) {
 		if(item.getTagCompound() == null){
 			item.setTagCompound(new NBTTagCompound());	
@@ -20,5 +21,9 @@ public class infusedStone extends Item{
 		if(item.stackTagCompound.getInteger("damage") == 0)item.itemID = modItems.dull.itemID;
 		
 	        return false;
-	    }*/
+	    }
+	@Override
+	public void registerIcons(IconRegister ir) {
+		this.itemIcon = ir.registerIcon("runeTrans:infusedStone");
+	}
 }

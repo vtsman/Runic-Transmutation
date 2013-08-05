@@ -44,7 +44,7 @@ public class transmutationWand extends IChargable {
 				if (world.getBlockTileEntity(x, y, z) == null) {
 					ItemStack s = new ItemStack(world.getBlockId(x, y, z), 1,
 							world.getBlockMetadata(x, y, z));
-					ItemStack st = transmuteManager.getNext(s);
+					ItemStack st = transmuteManager.getNextBlock(s);
 					System.out.println(st);
 					if (st != null) {
 						int re = transmuteManager.getEnergy(s);

@@ -1,5 +1,6 @@
 package vtsman.runicTrans.items;
 
+import vtsman.runicTrans.baseMod;
 import vtsman.runicTrans.tabs;
 import vtsman.runicTrans.block.modBlocks;
 import net.minecraft.block.Block;
@@ -12,7 +13,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
 
 public class dust extends Item {
-	private int spawnID = modBlocks.rune.blockID;
+	private int spawnID = baseMod.rune;
 	public static String[] names = { "Chalky", "Enriched", "Pulsating",
 			"Infused", "Darkened", "Mysterious", "Sorcerer's", "Forged",
 			"Enlightened" };
@@ -36,6 +37,10 @@ public class dust extends Item {
 	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10)
     {
         int i1 = par3World.getBlockId(par4, par5, par6);
+        if(i1 == Block.dragonEgg.blockID){
+        	par1ItemStack.itemID = modItems.myst.itemID;
+        	return true;
+        }
         if(((dust)par1ItemStack.getItem()).i == 7)return false;
         if (i1 == Block.snow.blockID && (par3World.getBlockMetadata(par4, par5, par6) & 7) < 1)
         {
