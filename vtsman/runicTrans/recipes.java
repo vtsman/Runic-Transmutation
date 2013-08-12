@@ -34,7 +34,8 @@ public static void init(){
 	tWand.stackTagCompound.setInteger("cap", 0);
 	GameRegistry.addShapedRecipe(tWand, " id", "ibi", "ei ", 'd', Item.diamond, 'i', modItems.infused, 'b', Item.blazeRod, 'e', Item.emerald);
 	GameRegistry.addShapedRecipe(new ItemStack(modItems.rStone, 1), "ci", "cc", "cc", 'c', Block.cobblestone, 'i', modItems.infused);
-	GameRegistry.addShapedRecipe(new ItemStack(modItems.tBall.itemID, 1, 0), " i ", "ici", " i ", 'i', modItems.infused, 'c', Item.pocketSundial);
+	GameRegistry.addShapedRecipe(new ItemStack(modItems.cWand.itemID, 1, 0), "dgd", " s ", 'g', Block.glass, 'd', Item.glowstone, 's', Item.stick);
+	GameRegistry.addShapedRecipe(new ItemStack(modBlocks.hex.blockID, 16, 0), "ggg", "gdg", "ggg", 'd', modItems.infused, 'g', Block.glass);
 	//GameRegistry.addRecipe(new stoneCrafting());
 }
 }

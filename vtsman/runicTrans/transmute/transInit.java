@@ -49,6 +49,9 @@ public class transInit {
 		add(256, new ItemStack(Item.ingotIron, 1, 0));
 		add(2048, new ItemStack(Item.ingotGold, 1, 0));
 		add(16384, new ItemStack(Item.diamond, 1, 0));
+		add(1304, new ItemStack(Block.blockIron, 1, 0));
+		add(18432, new ItemStack(Block.blockGold, 1, 0));
+		add(147456, new ItemStack(Block.blockDiamond, 1, 0));
 		add(512, new ItemStack(Item.enderPearl, 1, 0));
 		add(4, new ItemStack(Block.stone, 1, 0));
 		add(4, new ItemStack(Block.stoneBrick, 1, 0));
@@ -69,7 +72,9 @@ public class transInit {
         add(2, new ItemStack(Block.stoneSingleSlab, 1, 5));
         add(8, new ItemStack(Block.stoneSingleSlab, 1, 6));
         add(64, new ItemStack(Block.stoneSingleSlab, 1, 7));
-        add(128, new ItemStack(Item.netherQuartz, 1, 0));
+        add(256, new ItemStack(Block.blockNetherQuartz, 1, 0));
+        add(256, new ItemStack(Block.blockNetherQuartz, 1, 1));
+        add(256, new ItemStack(Block.blockNetherQuartz, 1, 2));
         add(16, new ItemStack(Item.brick, 1, 0));
         add(64, new ItemStack(Block.blockClay, 1, 0));
         add(64, new ItemStack(Block.brick));

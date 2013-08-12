@@ -1,6 +1,7 @@
 package vtsman.runicTrans;
 
 import vtsman.runicTrans.TE.capacitorTE;
+import vtsman.runicTrans.TE.colorable;
 import vtsman.runicTrans.TE.findRune;
 import vtsman.runicTrans.TE.transRuneTE;
 import vtsman.runicTrans.block.modBlocks;
@@ -8,10 +9,12 @@ import vtsman.runicTrans.client.ClientPacketHandler;
 import vtsman.runicTrans.items.modItems;
 import vtsman.runicTrans.transmute.transInit;
 import vtsman.runicTrans.transmute.transmuteManager;
+import vtsman.runicTrans.worldGen.modGen;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.src.BaseMod;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -31,25 +34,19 @@ import cpw.mods.fml.common.network.NetworkMod.SidedPacketHandler;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-
-@NetworkMod(clientSideRequired = true, serverSideRequired = false, // Whether
-																	// client
-																	// side and
-																	// server
-																	// side are
-																	// needed
-clientPacketHandlerSpec = @SidedPacketHandler(channels = { "RuneTrans TE" }, packetHandler = ClientPacketHandler.class), // For
-																															// clientside
-																															// packet
-																															// handling
-serverPacketHandlerSpec = @SidedPacketHandler(channels = { "RuneTrans Server" }, packetHandler = ServerPacketHandler.class))
 // For serverside packet handling
-@Mod(modid = "runeTrans", name = "Runic Alchemy", version = "0.0.0")
-public class baseMod { // The class file
+@Mod(modid = "runeTrans", name = "Runic Alchemy", version = "0.1.0")
+@NetworkMod(clientSideRequired = true, serverSideRequired = false) // Whether
+public class baseMod{ // The class file
 	
 	public static int cap;
 	public static int rune;
 	public static int cNode;
+	public static int hex;
+	public static int pulserend;
+	public static int animBlock;
+	public static int texBlock;
+	public static int pane;
 	
 	public static int chalk;
 	public static int enriched;
@@ -70,18 +67,26 @@ public class baseMod { // The class file
 	public static int fGem;
 	public static int rStone;
 	public static int tBall;
+	public static int cWand;
 	@Instance("runeTrans")
-	// The instance, this is very important later on
 	public static baseMod instance = new baseMod();
+	
 	@SidedProxy(clientSide = "vtsman.runicTrans.client.clientProxy", serverSide = "vtsman.runicTrans.commonProxy")
 	public static commonProxy proxy;
+	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 	Configuration config = new Configuration(event.getSuggestedConfigurationFile());
+	proxy.registerTEs();
 	config.load();
 	cap = config.get("Block IDs", "Capacitor: ", 750).getInt();
 	rune = config.get("Block IDs", "Rune: ", 751).getInt();
 	cNode = config.get("Block IDs", "Charge Node: ", 752).getInt();
+	hex = config.get("Block IDs", "Hexed Glass: ", 753).getInt();
+	pulserend = config.get("Block IDs", "Pulse Cloud", 754).getInt();
+	animBlock = config.get("Block IDs", "Animated Block", 755).getInt();
+	texBlock = config.get("Block IDs", "Texture Block", 756).getInt();
+	pane = config.get("Block IDs", "Hexed Glass Pane", 757).getInt();
 	
 	chalk = config.get("Item IDs", "Chalky Dust: ", 700).getInt();
 	enriched = config.get("Item IDs", "Enriched Dust: ", 701).getInt();
@@ -97,26 +102,21 @@ public class baseMod { // The class file
 	debug = config.get("Item IDs", "Wand of Infinite Power: ", 711).getInt();
 	tWand = config.get("Item IDs", "Wand of Transmutation: ", 712).getInt();
 	iStone = config.get("Item IDs", "Infused Stone: ", 713).getInt();
-	fwand = config.get("Item IDs", "Wand of Fire: ", 714).getInt();
+	fwand = config.get("Item IDs", "Fire Rod: ", 714).getInt();
 	fGem = config.get("Item IDs", "Fire Gem: ", 715).getInt();
 	rStone = config.get("Item IDs", "Rune Stone: ", 716).getInt();
 	tBall = config.get("Item IDs", "Time Sphere: ", 717).getInt();
+	cWand = config.get("Item IDs", "Color Wand: ", 718).getInt();
 	
 	config.save();
 	modBlocks.init();
 	modItems.init();
 	}
 	@EventHandler
-	public void ServerInit(FMLInitializationEvent event) {
-		System.out.println("Server");
-		GameRegistry.registerTileEntity(capacitorTE.class, "Runic Capacitor");
-		GameRegistry.registerTileEntity(findRune.class, "enlightened rune");
-		GameRegistry.registerTileEntity(vtsman.runicTrans.TE.chargeNode.class,
-				"Charge Node");
-		GameRegistry
-				.registerTileEntity(transRuneTE.class, "Transmutation Rune");
+	public void Init(FMLInitializationEvent event) {;
 		recipes.init();
 		proxy.registerRenderInformation();
+		modGen.init();
 		tabs.init();
 	}
 	@EventHandler

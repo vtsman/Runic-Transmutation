@@ -83,9 +83,12 @@ public class rune extends Block {
 						if(te.find.e != null){
 							ItemStack s = te.find.e.getEntityItem();
 							int i = transmuteManager.getEnergy(s);
+							int meta = world.getBlockMetadata(x, y, z);
+							if (te.getMax[meta] >= i || te.getMax[meta] == 0) {
 							if(te.tile.remove(i)){
 								EntityItem e = new EntityItem(world, (double)player.lastTickPosX, (double)player.lastTickPosY, (double)player.lastTickPosZ, s.copy());
 								world.spawnEntityInWorld(e);
+							}
 							}
 						}
 					}

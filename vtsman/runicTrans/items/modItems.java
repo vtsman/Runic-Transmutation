@@ -24,7 +24,8 @@ public class modItems {
 	public static Item fGem;
 	public static Item rStone;
 	public static Item tBall;
-
+	public static Item cWand;
+	
 	public static void init() {
 		chalk = new dust(baseMod.chalk, 0);
 		enriched = new dust(baseMod.enriched, 1);
@@ -53,7 +54,7 @@ public class modItems {
 				.setUnlocalizedName("rstone");
 		tBall = new timeSphere(baseMod.tBall).setCreativeTab(tabs.tabRune)
 				.setUnlocalizedName("tBall");
-
+		cWand = new colorWand(baseMod.cWand).setCreativeTab(tabs.tabRune).setUnlocalizedName("colorWand");
 		LanguageRegistry.addName(chalk, dust.names[0] + " Dust");
 		LanguageRegistry.addName(enriched, dust.names[1] + " Dust");
 		LanguageRegistry.addName(pulse, dust.names[2] + " Dust");
@@ -72,5 +73,6 @@ public class modItems {
 		LanguageRegistry.addName(rStone, "Rune stone");
 		LanguageRegistry.addName(fGem, "Fire Gem");
 		LanguageRegistry.addName(tBall, "Time Sphere");
+		LanguageRegistry.addName(cWand, "Color Wand");
 	}
 }

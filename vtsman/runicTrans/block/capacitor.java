@@ -2,12 +2,13 @@ package vtsman.runicTrans.block;
 
 import vtsman.runicTrans.TE.capacitorTE;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-public class capacitor extends Block {
+public class capacitor extends BlockContainer {
 
 	public capacitor(int par1, Material par2Material) {
 		super(par1, par2Material);
@@ -24,13 +25,10 @@ public class capacitor extends Block {
 	public void registerIcons(IconRegister ir) {
 		this.blockIcon = ir.registerIcon("runetrans:cap");
 	}
+	// todo add TE
 
 	@Override
-	public TileEntity createTileEntity(World world, int meta) {
-		if(!world.isRemote){
+	public TileEntity createNewTileEntity(World world) {
 		return new capacitorTE();
-		}
-		return null;
 	}
-	// todo add TE
 }
