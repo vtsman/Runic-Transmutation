@@ -7,12 +7,14 @@ public class capacitorTE extends TileEntity {
 	public int RE = 0;
 
 	public void readFromNBT(NBTTagCompound data) {
+		super.readFromNBT(data);
 		if (data.hasKey("RE"))
 			this.RE = data.getInteger("RE");
 		System.out.println(this.RE);
 	}
 
 	public void writeToNBT(NBTTagCompound data) {
+		super.writeToNBT(data);
 		data.setInteger("RE", this.RE);
 	}
 

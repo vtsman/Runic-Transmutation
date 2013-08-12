@@ -108,6 +108,7 @@ public class animBlocks1 extends Block implements ICloud{
     			EntityPlayer player, int par6, float par7, float par8, float par9) {
     		ItemStack i = player.getHeldItem();
     		colorable c = (colorable) world.getBlockTileEntity(x, y, z);
+    		System.out.println(c.worldObj.isRemote);
     		if (i != null) {
     			if (i.itemID == Item.dyePowder.itemID) {
     				if (i.getItemDamage() == 1)

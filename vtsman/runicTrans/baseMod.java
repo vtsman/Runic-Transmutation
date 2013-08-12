@@ -36,7 +36,8 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 // For serverside packet handling
 @Mod(modid = "runeTrans", name = "Runic Alchemy", version = "0.1.0")
-@NetworkMod(clientSideRequired = true, serverSideRequired = false) // Whether
+@NetworkMod(channels = {"RuneAlchem TE"}, clientSideRequired = true, serverSideRequired = false,
+clientPacketHandlerSpec = @SidedPacketHandler(channels = {"RuneAlchem TE"}, packetHandler = packetHandler.class)) //For clientside packet handling
 public class baseMod{ // The class file
 	
 	public static int cap;
