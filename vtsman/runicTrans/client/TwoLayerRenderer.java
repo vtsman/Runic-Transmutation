@@ -20,7 +20,7 @@ int id;
                 //we are on the solid block render pass, lets render the solid diamond block
 				renderer.renderBlockAsItem(modBlocks.pulse, 0, 1f);
                 //we are on the alpha render pass, draw the ice around the diamond
-            if(id == modBlocks.animBlock.blockID && meta == 0){
+				if(id == modBlocks.animBlock.blockID && meta == 0){
             	renderer.renderBlockAsItem(modBlocks.hex, 0, 1f);
             }
             else if(id == modBlocks.animBlock.blockID && meta == 5){

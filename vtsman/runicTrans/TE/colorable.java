@@ -22,12 +22,13 @@ public class colorable extends TileEntity {
 	@Override
 	public void updateEntity(){
 		i++;
-		if(i == 200){
+		if(i == 20){
 			i = 0;
 			packetHandler.sendPacket(this);
 			this.worldObj.markBlockForRenderUpdate(this.xCoord, this.yCoord, this.zCoord);
 		}
 	}
+	
 	public void add(String s, int c) {
 		if (s == "r") {
 			if (r + c <= 0xFF) {

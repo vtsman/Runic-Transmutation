@@ -57,10 +57,11 @@ public class packetHandler implements IPacketHandler{
 				player = (EntityPlayerMP) world.playerEntities.get(j);
 				}
 				if(player != null){
-				if (Math.abs(player.posX - x) <= maxDistance && Math.abs(player.posY - y) <= maxDistance && Math.abs(player.posZ - y) <= maxDistance) {
+				//if (Math.abs(player.posX - x) <= maxDistance && Math.abs(player.posY - y) <= maxDistance && Math.abs(player.posZ - y) <= maxDistance) {
 					PacketDispatcher.sendPacketToPlayer(packet, (Player) player);
 					//player.playerNetServerHandler.sendPacketToPlayer(packet);
-				}
+				//}
+				//System.out.println("playermp2");
 				}
 			}
 		}
@@ -76,10 +77,8 @@ public class packetHandler implements IPacketHandler{
 	@Override
 	public void onPacketData(INetworkManager manager, Packet250CustomPayload payload, Player player){
 	DataInputStream data = new DataInputStream(new ByteArrayInputStream(payload.data));
-	System.out.println("here");
 	World world = ((EntityPlayer)player).worldObj;
 	if(payload.channel == "RuneAlchem TE"){
-		System.out.println("Packet Recieved");
 	NBTTagCompound tag = null;
 	short length;
 	try {
@@ -87,7 +86,6 @@ public class packetHandler implements IPacketHandler{
 		byte[] compressed = new byte[length];
 		data.readFully(compressed);
 		tag = CompressedStreamTools.decompress(compressed);
-		System.out.println("Tag decompressed");
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();

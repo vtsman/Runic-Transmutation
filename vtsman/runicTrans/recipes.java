@@ -36,6 +36,12 @@ public static void init(){
 	GameRegistry.addShapedRecipe(new ItemStack(modItems.rStone, 1), "ci", "cc", "cc", 'c', Block.cobblestone, 'i', modItems.infused);
 	GameRegistry.addShapedRecipe(new ItemStack(modItems.cWand.itemID, 1, 0), "dgd", " s ", 'g', Block.glass, 'd', Item.glowstone, 's', Item.stick);
 	GameRegistry.addShapedRecipe(new ItemStack(modBlocks.hex.blockID, 16, 0), "ggg", "gdg", "ggg", 'd', modItems.infused, 'g', Block.glass);
-	//GameRegistry.addRecipe(new stoneCrafting());
+	GameRegistry.addRecipe(new stoneCrafting());
+	GameRegistry.addRecipe(new ItemStack(modBlocks.animBlock, 16, 0), "sss", "sis", "sss", 's', Block.stone, 'i', modItems.infused);
+	GameRegistry.addRecipe(new ItemStack(modBlocks.animBlock, 16, 1), "bbb", "bib", "bbb", 'b', Block.stoneBrick, 'i', modItems.infused);
+	GameRegistry.addRecipe(new ItemStack(modBlocks.animBlock, 16, 2), "sss", "sis", "sss", 's', Item.brick, 'i', modItems.infused);
+	GameRegistry.addRecipe(new ItemStack(modBlocks.animBlock, 16, 3), "sss", "gig", "sss", 's', Block.stone, 'i', modItems.infused, 'g', Item.gunpowder);
+	GameRegistry.addRecipe(new ItemStack(modBlocks.animBlock, 16, 5), "sbs", "bib", "sbs", 's', Block.stone, 'i', modItems.infused, 'b', Block.stoneBrick);
+	GameRegistry.addRecipe(new ItemStack(modBlocks.animBlock, 16, 6), "sss", "sis", "sss", 's', Item.ingotIron, 'i', modItems.infused);
 }
 }

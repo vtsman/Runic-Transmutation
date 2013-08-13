@@ -14,6 +14,7 @@ import net.minecraftforge.client.MinecraftForgeClient;
 public class clientProxy extends commonProxy {
 	public static int renderPass;
 	public static int twoRenderPass;
+	public static boolean itemPass;
 	@Override
     public void registerTEs()
     {

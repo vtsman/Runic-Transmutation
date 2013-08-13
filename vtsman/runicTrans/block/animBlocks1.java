@@ -7,6 +7,7 @@ import java.util.Random;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import vtsman.runicTrans.packetHandler;
 import vtsman.runicTrans.TE.colorable;
 import vtsman.runicTrans.client.clientProxy;
 import vtsman.runicTrans.items.modItems;
@@ -101,6 +102,7 @@ public class animBlocks1 extends Block implements ICloud{
     				}
     			}
     		}
+    		packetHandler.sendPacket(world.getBlockTileEntity(x, y, z));
     		world.markBlockForRenderUpdate(x, y, z);
     	}
 
@@ -118,6 +120,7 @@ public class animBlocks1 extends Block implements ICloud{
     				if (i.getItemDamage() == 4) {
     					c.add("b", 0x08);
     				}
+    	    		packetHandler.sendPacket(world.getBlockTileEntity(x, y, z));
     				world.markBlockForRenderUpdate(x, y, z);
     			}
     		}

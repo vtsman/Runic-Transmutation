@@ -12,6 +12,7 @@ import vtsman.runicTrans.transmute.transmuteManager;
 import vtsman.runicTrans.worldGen.modGen;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.src.BaseMod;
@@ -69,6 +70,7 @@ public class baseMod{ // The class file
 	public static int rStone;
 	public static int tBall;
 	public static int cWand;
+	public static Enchantment charge;
 	@Instance("runeTrans")
 	public static baseMod instance = new baseMod();
 	
@@ -108,14 +110,16 @@ public class baseMod{ // The class file
 	rStone = config.get("Item IDs", "Rune Stone: ", 716).getInt();
 	tBall = config.get("Item IDs", "Time Sphere: ", 717).getInt();
 	cWand = config.get("Item IDs", "Color Wand: ", 718).getInt();
-	
+	int e = config.get("Enchantment IDs", "Infused: ", 85).getInt();
+	charge = new energizedEnchant(e, 10);
 	config.save();
 	modBlocks.init();
 	modItems.init();
 	}
 	@EventHandler
-	public void Init(FMLInitializationEvent event) {;
+	public void Init(FMLInitializationEvent event) {
 		recipes.init();
+		
 		proxy.registerRenderInformation();
 		modGen.init();
 		tabs.init();

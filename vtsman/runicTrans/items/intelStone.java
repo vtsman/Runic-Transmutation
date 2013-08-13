@@ -4,6 +4,7 @@ import vtsman.runicTrans.TE.capacitorTE;
 import vtsman.runicTrans.TE.transRuneTE;
 import vtsman.runicTrans.block.capacitor;
 import vtsman.runicTrans.block.modBlocks;
+import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;

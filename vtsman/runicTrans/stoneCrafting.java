@@ -20,31 +20,27 @@ ItemStack Transmuting;
 ItemStack out;
 int itemcount = 0;
 public stoneCrafting(){
+
 }
 	@Override
 	public boolean matches(InventoryCrafting i, World world) {
-		System.out.println(i != null);
-		return this.getCraftingResult(i) != null;
-	}
-	@Override
-	public ItemStack getCraftingResult(InventoryCrafting inventorycrafting) {
 		hasStone = false;
 		twoItems = false;
 		out = null;
 		Transmuting = null;
 		itemcount = 0;
-		for(int i = 0; i < 9; i++){
-			if(inventorycrafting.getStackInSlot(i) != null){
-		if((inventorycrafting.getStackInSlot(i)).itemID == modItems.iStone.itemID)hasStone = true;
+		for(int j = 0; j < 9; j++){
+			if(i.getStackInSlot(j) != null){
+		if((i.getStackInSlot(j)).itemID == modItems.iStone.itemID)hasStone = true;
 			}
 			}
-		for(int i = 0; i < 9; i++){
-			if(inventorycrafting.getStackInSlot(i) != null){
-				if((inventorycrafting.getStackInSlot(i)).itemID != modItems.iStone.itemID)Transmuting = inventorycrafting.getStackInSlot(i);
+		for(int j = 0; j < 9; j++){
+			if(i.getStackInSlot(j) != null){
+				if((i.getStackInSlot(j)).itemID != modItems.iStone.itemID)Transmuting = i.getStackInSlot(j);
 			}
 		}
-		for(int i = 0; i < 9; i++){
-			if(inventorycrafting.getStackInSlot(i) != null){
+		for(int j = 0; j < 9; j++){
+			if(i.getStackInSlot(j) != null){
 			itemcount++;
 			}
 		}
@@ -52,21 +48,26 @@ public stoneCrafting(){
 		if(twoItems && hasStone){
 			System.out.println("here");
 			out = transmuteManager.getNext(Transmuting);
-		return out;
+			System.out.println("NullOut " + out == null);
+		return true;
 		}
+		else{
 		out = null;
-		return null;
+		return false;
+		}
+	}
+	@Override
+	public ItemStack getCraftingResult(InventoryCrafting inventorycrafting) {
+		return out.copy();
 	}
 	@Override
 	public int getRecipeSize() {
 		// TODO Auto-generated method stub
-		return 9;
+		return 10;
 	}
 	@Override
 	public ItemStack getRecipeOutput() {
-		// TODO Auto-generated method stub
-		//return transmuteManager.getNext(Transmuting);
-		return out.copy();
+		return out;
 	}
 
 }

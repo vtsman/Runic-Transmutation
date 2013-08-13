@@ -6,6 +6,7 @@ import static net.minecraftforge.common.ForgeDirection.UP;
 import java.util.HashMap;
 import java.util.List;
 
+import vtsman.runicTrans.packetHandler;
 import vtsman.runicTrans.TE.colorable;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -186,6 +187,7 @@ public class hexGlass extends BlockBreakable {
 				}
 			}
 		}
+		packetHandler.sendPacket(world.getBlockTileEntity(x, y, z));
 		world.markBlockForRenderUpdate(x, y, z);
 		}
 	}
@@ -205,6 +207,7 @@ public class hexGlass extends BlockBreakable {
 				if (i.getItemDamage() == 4) {
 					c.add("b", 0x08);
 				}
+	    		packetHandler.sendPacket(world.getBlockTileEntity(x, y, z));
 				world.markBlockForRenderUpdate(x, y, z);
 			}
 		}

@@ -1,5 +1,6 @@
 package vtsman.runicTrans.block;
 
+import vtsman.runicTrans.baseMod;
 import vtsman.runicTrans.TE.capacitorTE;
 import vtsman.runicTrans.TE.chargeNode;
 import vtsman.runicTrans.items.IChargable;
@@ -7,6 +8,7 @@ import vtsman.runicTrans.items.modItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -56,6 +58,21 @@ public class cNode extends Block {
 		if (!world.isRemote) {
 			chargeNode te = (chargeNode) world.getBlockTileEntity(x, y, z);
 			ItemStack stack = player.getHeldItem();
+			int chargeLevel = EnchantmentHelper.getEnchantmentLevel(baseMod.charge.effectId, stack);
+			System.out.println(chargeLevel);
+			if(chargeLevel > 0){
+				int maxCost = stack.getItemDamage() * 18 / chargeLevel;
+				if(te.tile != null){
+					if(te.tile.remove(maxCost)){
+						stack.setItemDamage(0);
+					}
+					else{
+						int damageRem = te.tile.RE * 18 / chargeLevel;
+						stack.setItemDamage(stack.getItemDamage() + damageRem);
+						te.tile.RE = 0;
+					}
+				}
+			}
 			if (stack != null && te.tile != null) {
 				if (stack.itemID == modItems.pulse.itemID) {
 					if (te.tile != null) {

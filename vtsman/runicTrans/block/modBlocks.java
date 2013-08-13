@@ -10,6 +10,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.MinecraftForge;
 
@@ -51,5 +52,14 @@ public class modBlocks {
 		MinecraftForge.setBlockHarvestLevel(chargeNode, "Pickaxe", 3);
 		MinecraftForge.setBlockHarvestLevel(cap, "Pickaxe", 2);
 		LanguageRegistry.addName(chargeNode, "Charge Node");
+		ItemStack s = new ItemStack(hex, 1, 0);
+		LanguageRegistry.addName(s.copy(), "Hexed Glass");
+		s = new ItemStack(hex, 1, 1);
+		LanguageRegistry.addName(s.copy(), "Frosted Hexed Glass");
+		String[] names = {"Infused Block", "Infused Bricks", "Infused Tiles", "Carved Infused Block", "Pulsating Ore", "Etched Infused Block", "The Three Virtues"};
+		for(int i = 0; i < 7; i++){
+			ItemStack stack = new ItemStack(animBlock, 1, i);
+			LanguageRegistry.addName(stack.copy(), names[i]);
+		}
 	}
 }

@@ -1,5 +1,6 @@
 package vtsman.runicTrans.TE;
 
+import vtsman.runicTrans.packetHandler;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 
@@ -10,14 +11,22 @@ public class capacitorTE extends TileEntity {
 		super.readFromNBT(data);
 		if (data.hasKey("RE"))
 			this.RE = data.getInteger("RE");
-		System.out.println(this.RE);
 	}
 
 	public void writeToNBT(NBTTagCompound data) {
 		super.writeToNBT(data);
 		data.setInteger("RE", this.RE);
 	}
-
+	int i = 0;
+	@Override
+	public void updateEntity(){
+		i++;
+		if(i == 20){
+			i = 0;
+			packetHandler.sendPacket(this);
+			this.worldObj.markBlockForRenderUpdate(this.xCoord, this.yCoord, this.zCoord);
+		}
+	}
 	public void add(int i) {
 		RE = RE + i;
 	}
