@@ -31,12 +31,12 @@ public stoneCrafting(){
 		itemcount = 0;
 		for(int j = 0; j < 9; j++){
 			if(i.getStackInSlot(j) != null){
-		if((i.getStackInSlot(j)).itemID == modItems.iStone.itemID)hasStone = true;
+		if((i.getStackInSlot(j)).itemID == modItems.rStone.itemID)hasStone = true;
 			}
 			}
 		for(int j = 0; j < 9; j++){
 			if(i.getStackInSlot(j) != null){
-				if((i.getStackInSlot(j)).itemID != modItems.iStone.itemID)Transmuting = i.getStackInSlot(j);
+				if((i.getStackInSlot(j)).itemID != modItems.rStone.itemID)Transmuting = i.getStackInSlot(j);
 			}
 		}
 		for(int j = 0; j < 9; j++){
@@ -46,9 +46,7 @@ public stoneCrafting(){
 		}
 		if(itemcount == 2)this.twoItems = true;
 		if(twoItems && hasStone){
-			System.out.println("here");
 			out = transmuteManager.getNext(Transmuting);
-			System.out.println("NullOut " + out == null);
 		return true;
 		}
 		else{

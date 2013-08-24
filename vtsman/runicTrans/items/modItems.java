@@ -15,15 +15,10 @@ public class modItems {
 	public static dust sorce;
 	public static dust forge;
 	public static dust enlight;
-	public static Item dull;
-	public static Item eStone;
 	public static Item debug;
-	public static Item transWand;
-	public static Item iStone;
 	public static Item fWand;
 	public static Item fGem;
 	public static Item rStone;
-	public static Item tBall;
 	public static Item cWand;
 	
 	public static void init() {
@@ -36,24 +31,14 @@ public class modItems {
 		sorce = new dust(baseMod.sorce, 6);
 		forge = new dust(baseMod.forge, 7);
 		enlight = new dust(baseMod.enlight, 8);
-		dull = new dullStone(baseMod.dull).setCreativeTab(tabs.tabRune)
-				.setUnlocalizedName("dullStone");
-		eStone = new intelStone(baseMod.eStone).setCreativeTab(tabs.tabRune)
-				.setUnlocalizedName("intelStone");
 		debug = new debug(baseMod.debug).setCreativeTab(tabs.tabRune)
 				.setUnlocalizedName("debug");
-		transWand = new transmutationWand(baseMod.tWand).setCreativeTab(
-				tabs.tabRune).setUnlocalizedName("transWand");
-		iStone = new infusedStone(baseMod.iStone).setCreativeTab(tabs.tabRune)
-				.setUnlocalizedName("istone");
 		fWand = new fireRod(baseMod.fwand).setCreativeTab(tabs.tabRune)
 				.setUnlocalizedName("fwand");
 		fGem = new fireGem(baseMod.fGem).setCreativeTab(tabs.tabRune)
 				.setUnlocalizedName("fstone");
 		rStone = new runeStone(baseMod.rStone).setCreativeTab(tabs.tabRune)
 				.setUnlocalizedName("rstone");
-		tBall = new timeSphere(baseMod.tBall).setCreativeTab(tabs.tabRune)
-				.setUnlocalizedName("tBall");
 		cWand = new colorWand(baseMod.cWand).setCreativeTab(tabs.tabRune).setUnlocalizedName("colorWand");
 		LanguageRegistry.addName(chalk, dust.names[0] + " Dust");
 		LanguageRegistry.addName(enriched, dust.names[1] + " Dust");
@@ -64,15 +49,10 @@ public class modItems {
 		LanguageRegistry.addName(sorce, dust.names[6] + " Dust");
 		LanguageRegistry.addName(forge, dust.names[7] + " Dust");
 		LanguageRegistry.addName(enlight, dust.names[8] + " Dust");
-		LanguageRegistry.addName(dull, "Dull Stone");
-		LanguageRegistry.addName(eStone, "Enlightened Stone");
 		LanguageRegistry.addName(debug, "Wand of limitless power");
-		LanguageRegistry.addName(transWand, "Transmutation Wand");
-		LanguageRegistry.addName(iStone, "Infused Stone");
-		LanguageRegistry.addName(fWand, "Fire Rod");
+		LanguageRegistry.addName(fWand, "Firey Staff");
 		LanguageRegistry.addName(rStone, "Rune stone");
 		LanguageRegistry.addName(fGem, "Fire Gem");
-		LanguageRegistry.addName(tBall, "Time Sphere");
-		LanguageRegistry.addName(cWand, "Color Wand");
+		LanguageRegistry.addName(cWand, "Magical Paintbrush");
 	}
 }

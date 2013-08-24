@@ -26,7 +26,7 @@ public class rune extends Block {
 	public rune(int par1, Material par2Material) {
 		super(par1, par2Material);
 		float f = 1f / 16f;
-		 this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, f, 1.0F);
+		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, f, 1.0F);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -39,16 +39,17 @@ public class rune extends Block {
 			int par4, Entity e) {
 		TileEntity rune = world.getBlockTileEntity(par2, par3, par4);
 		if (!world.isRemote) {
-			if(rune instanceof transRuneTE)
-			((transRuneTE)rune).suck(e);
-			if(rune instanceof findRune)
+			if (rune instanceof transRuneTE)
+				((transRuneTE) rune).suck(e);
+			if (rune instanceof findRune)
 				((findRune) rune).accept(e);
 		}
 	}
-	public int quantityDropped(int par1, Random par2Random)
-    {
+
+	public int quantityDropped(int par1, Random par2Random) {
 		return 0;
-    }
+	}
+
 	public int getRenderType() {
 		return -1;
 	}
@@ -73,22 +74,31 @@ public class rune extends Block {
 	public boolean renderAsNormalBlock() {
 		return false;
 	}
+
 	public boolean onBlockActivated(World world, int x, int y, int z,
 			EntityPlayer player, int par6, float par7, float par8, float par9) {
 		if (!world.isRemote) {
-			if(world.getBlockMetadata(x, y, z) < 7){
-				transRuneTE te = (transRuneTE) world.getBlockTileEntity(x, y, z);
-				if(player.getHeldItem().itemID == modItems.rStone.itemID){
-					if(te.tile != null && te.find != null){
-						if(te.find.e != null){
-							ItemStack s = te.find.e.getEntityItem();
-							int i = transmuteManager.getEnergy(s);
-							int meta = world.getBlockMetadata(x, y, z);
-							if (te.getMax[meta] >= i || te.getMax[meta] == 0) {
-							if(te.tile.remove(i)){
-								EntityItem e = new EntityItem(world, (double)player.lastTickPosX, (double)player.lastTickPosY, (double)player.lastTickPosZ, s.copy());
-								world.spawnEntityInWorld(e);
-							}
+			if (world.getBlockMetadata(x, y, z) < 7) {
+				TileEntity tile = world.getBlockTileEntity(x, y, z);
+				if (tile instanceof transRuneTE) {
+					transRuneTE te = (transRuneTE)tile;
+					if (player.getHeldItem().itemID == modItems.rStone.itemID) {
+						if (te.tile != null && te.find != null) {
+							if (te.find.e != null) {
+								ItemStack s = te.find.e.getEntityItem();
+								int i = transmuteManager.getEnergy(s);
+								int meta = world.getBlockMetadata(x, y, z);
+								if (te.getMax[meta] >= i
+										|| te.getMax[meta] == 0) {
+									if (te.tile.remove(i)) {
+										EntityItem e = new EntityItem(world,
+												(double) player.lastTickPosX,
+												(double) player.lastTickPosY,
+												(double) player.lastTickPosZ,
+												s.copy());
+										world.spawnEntityInWorld(e);
+									}
+								}
 							}
 						}
 					}
@@ -97,6 +107,7 @@ public class rune extends Block {
 		}
 		return false;
 	}
+
 	@Override
 	public TileEntity createTileEntity(World world, int meta) {
 		if (meta < 7) {

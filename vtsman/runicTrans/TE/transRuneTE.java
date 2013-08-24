@@ -12,12 +12,12 @@ import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 
-public class transRuneTE extends TileEntity {
+public class transRuneTE extends TileEntity implements IRelay{
 	public List<ItemStack> items = new ArrayList<ItemStack>();
 	public static double[] getMult = new double[] { .5d, 2d / 3d, 10d / 14d,
 			10d / 13d, .8d, .9d, 1d };
 	public static int[] getMax = new int[] { 4, 20, 30, 80, 160, 320, 0 };
-	public capacitorTE tile;
+	public IRelay tile;
 	public findRune find;
 	@Override
 	public void updateEntity() {
@@ -29,16 +29,18 @@ public class transRuneTE extends TileEntity {
 		}
 	}
 
-	public capacitorTE getcap() {
+	public IRelay getcap() {
 		for (int i = -9; i <= 9; i++) {
 			for (int j = -9; j <= 9; j++) {
 				for (int k = -9; k <= 9; k++) {
 					TileEntity t = this.worldObj.getBlockTileEntity(this.xCoord
 							+ i, this.yCoord + j, this.zCoord + k);
 					if (t != null) {
-						if (t instanceof capacitorTE) {
-							System.out.println("found");
-							return (capacitorTE) t;
+						if (t instanceof IRelay) {
+							if (((IRelay) t).canJoin(this)) {
+								System.out.println("found");
+								return (IRelay) t;
+							}
 						}
 					}
 				}
@@ -91,6 +93,40 @@ public class transRuneTE extends TileEntity {
 		}
 		Random rand = new Random();
 		e.setVelocity(rand.nextDouble() * 2 - 1d, 1, rand.nextDouble() * 2 - 1d);
+		return false;
+	}
+
+	@Override
+	public IRelay tile() {
+		return tile;
+	}
+
+	@Override
+	public void add(int i) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean remove(int i) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public int getRE() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setRE(int i) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean canJoin(IRelay r) {
 		return false;
 	}
 }

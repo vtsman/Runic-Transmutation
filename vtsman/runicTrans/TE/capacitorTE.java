@@ -4,7 +4,7 @@ import vtsman.runicTrans.packetHandler;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 
-public class capacitorTE extends TileEntity {
+public class capacitorTE extends TileEntity implements IRelay{
 	public int RE = 0;
 
 	public void readFromNBT(NBTTagCompound data) {
@@ -35,6 +35,26 @@ public class capacitorTE extends TileEntity {
 		if (i > RE)
 			return false;
 		RE = RE - i;
+		return true;
+	}
+
+	@Override
+	public IRelay tile() {
+		return this;
+	}
+
+	@Override
+	public int getRE() {
+		return RE;
+	}
+	
+	@Override
+	public void setRE(int i) {
+		this.RE = i;
+	}
+
+	@Override
+	public boolean canJoin(IRelay r) {
 		return true;
 	}
 }

@@ -71,7 +71,7 @@ public class transInit {
         add(128, new ItemStack(Block.stoneSingleSlab, 1, 4));
         add(2, new ItemStack(Block.stoneSingleSlab, 1, 5));
         add(8, new ItemStack(Block.stoneSingleSlab, 1, 6));
-        add(64, new ItemStack(Block.stoneSingleSlab, 1, 7));
+        add(128, new ItemStack(Block.stoneSingleSlab, 1, 7));
         add(256, new ItemStack(Block.blockNetherQuartz, 1, 0));
         add(256, new ItemStack(Block.blockNetherQuartz, 1, 1));
         add(256, new ItemStack(Block.blockNetherQuartz, 1, 2));

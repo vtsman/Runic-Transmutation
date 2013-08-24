@@ -1,10 +1,9 @@
 package vtsman.runicTrans.TE;
 
-import net.minecraft.tileentity.*;
+import net.minecraft.tileentity.TileEntity;
 
-public class chargeNode extends TileEntity implements IRelay {
-	public IRelay tile;
-
+public class relay extends TileEntity implements IRelay{
+	IRelay tile;
 	public IRelay getcap() {
 		for (int i = -9; i <= 9; i++) {
 			for (int j = -9; j <= 9; j++) {
@@ -14,7 +13,6 @@ public class chargeNode extends TileEntity implements IRelay {
 					if (t != null) {
 						if (t instanceof IRelay) {
 							if (((IRelay) t).canJoin(this)) {
-								System.out.println("found");
 								return (IRelay) t;
 							}
 						}
@@ -24,15 +22,15 @@ public class chargeNode extends TileEntity implements IRelay {
 		}
 		return null;
 	}
-
+	
 	@Override
 	public void updateEntity() {
 		if (!this.worldObj.isRemote) {
 			if (this.tile == null)
+				System.out.println("noTile");
 				tile = getcap();
 		}
 	}
-
 	@Override
 	public IRelay tile() {
 		return tile;
@@ -64,10 +62,9 @@ public class chargeNode extends TileEntity implements IRelay {
 		if(tile != null);
 		tile.setRE(i);
 	}
-
 	@Override
 	public boolean canJoin(IRelay r) {
-		// TODO Auto-generated method stub
-		return false;
+		return this.tile() instanceof capacitorTE && r.tile() == null && r != this;
 	}
+
 }

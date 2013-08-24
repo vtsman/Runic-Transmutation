@@ -21,9 +21,9 @@ public class textureBlock extends Block{
 		this.icons[1] = ir.registerIcon("runetrans:brick");
 		this.icons[2] = ir.registerIcon("runetrans:tile");
 		this.icons[3] = ir.registerIcon("runetrans:creep");
-		this.icons[4] = ir.registerIcon("runetrans:ore");
+		this.icons[4] = ir.registerIcon("runetrans:sBrick");
 		this.icons[5] = ir.registerIcon("runetrans:square");
-		this.icons[6] = ir.registerIcon("runetrans:threevirtues");
+		this.icons[6] = ir.registerIcon("runetrans:frame");
 	}
 
 }

@@ -26,6 +26,8 @@ public class commonProxy {
 		GameRegistry.registerTileEntity(findRune.class, "runeTrans.enlightenedrune");
 		GameRegistry.registerTileEntity(vtsman.runicTrans.TE.chargeNode.class,
 				"runeTrans.ChargeNode");
+		GameRegistry.registerTileEntity(vtsman.runicTrans.TE.relay.class,
+				"runeTrans.relay");
 		GameRegistry
 				.registerTileEntity(transRuneTE.class, "runeTrans.TransmutationRune");
 	}

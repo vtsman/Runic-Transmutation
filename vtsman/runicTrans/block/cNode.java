@@ -1,7 +1,7 @@
 package vtsman.runicTrans.block;
 
 import vtsman.runicTrans.baseMod;
-import vtsman.runicTrans.TE.capacitorTE;
+import vtsman.runicTrans.TE.IRelay;
 import vtsman.runicTrans.TE.chargeNode;
 import vtsman.runicTrans.items.IChargable;
 import vtsman.runicTrans.items.modItems;
@@ -59,24 +59,24 @@ public class cNode extends Block {
 			chargeNode te = (chargeNode) world.getBlockTileEntity(x, y, z);
 			ItemStack stack = player.getHeldItem();
 			int chargeLevel = EnchantmentHelper.getEnchantmentLevel(baseMod.charge.effectId, stack);
-			System.out.println(chargeLevel);
 			if(chargeLevel > 0){
 				int maxCost = stack.getItemDamage() * 18 / chargeLevel;
-				if(te.tile != null){
-					if(te.tile.remove(maxCost)){
+				if(te.tile() != null){
+					if(te.tile().remove(maxCost)){
 						stack.setItemDamage(0);
 					}
 					else{
-						int damageRem = te.tile.RE * 18 / chargeLevel;
-						stack.setItemDamage(stack.getItemDamage() + damageRem);
-						te.tile.RE = 0;
+						int damageRem = te.getRE() / 18 * chargeLevel;
+						System.out.println(damageRem);
+						stack.setItemDamage(stack.getItemDamage() - damageRem);
+						te.setRE(0);
 					}
 				}
 			}
-			if (stack != null && te.tile != null) {
+			if (stack != null && te.tile() != null) {
 				if (stack.itemID == modItems.pulse.itemID) {
-					if (te.tile != null) {
-						if (te.tile.remove(30 * stack.stackSize)) {
+					if (te.tile() != null) {
+						if (te.tile().remove(30 * stack.stackSize)) {
 							stack.itemID = modItems.infused.itemID;
 						}
 					}
@@ -87,13 +87,13 @@ public class cNode extends Block {
 						stack.stackTagCompound = new NBTTagCompound();
 						stack.getTagCompound().setInteger("cap", 0);
 					}
-					if (charge.getRemaining(stack) > te.tile.RE) {
-						charge.add(te.tile.RE, stack);
-						te.tile.remove(te.tile.RE);
+					if (charge.getRemaining(stack) > te.getRE()) {
+						charge.add(te.getRE(), stack);
+						te.tile().remove(te.getRE());
 					} else {
 						int c = charge.getRemaining(stack);
 						charge.add(c, stack);
-						te.tile.remove(c);
+						te.tile().remove(c);
 					}
 				}
 			}

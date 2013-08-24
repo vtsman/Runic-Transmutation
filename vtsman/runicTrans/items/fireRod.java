@@ -97,14 +97,17 @@ public class fireRod extends IChargable {
 			List list, boolean par4) {
 		list.clear();
 		list.add("Fire Rod");
-		if (stack.getTagCompound() != null) {
-			if (stack.getTagCompound().hasKey("cap")) {
+		if (stack.getTagCompound() == null) {
+		stack.stackTagCompound = new NBTTagCompound();
+		}
+			if (!stack.getTagCompound().hasKey("cap")) {
+				stack.stackTagCompound.setInteger("cap", 0);
+			}
+			
 				list.add("§b§oThis wand has "
 						+ stack.getTagCompound().getInteger("cap")
 						+ " out of 300 energy.");
-			}
 		}
-	}
 	@Override
 	public void registerIcons(IconRegister ir) {
 		this.itemIcon = ir.registerIcon("runeTrans:fireRod");

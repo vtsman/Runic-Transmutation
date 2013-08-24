@@ -30,7 +30,6 @@ public class animBlocks1 extends Block implements ICloud{
         public animBlocks1(int i)
         {
         super(i, Material.rock);
-        this.setCreativeTab(CreativeTabs.tabBlock);
         }
         
         @Override
@@ -135,37 +134,11 @@ public class animBlocks1 extends Block implements ICloud{
 			color[1] = c.g;
 			color[2] = c.b;
 			}
-			if(meta == 4){
-			color[2] = 0x00;
-			color[1] = 0x00;
-			color[0] = 0xFF;
-			}
 			return color;
 		}
 		public boolean isBlockSolidOnSide(World world, int x, int y, int z, ForgeDirection side)
 	    {
 	        return true;
-	    }
-		public int damageDropped(int par1)
-	    {
-			if(par1 == 4){
-				return 0;
-			}
-	        return par1;
-	    }
-		public int quantityDropped(int meta, int fortune, Random random)
-	    {
-			if(meta == 4){
-				return random.nextInt(3 + fortune) + 1;
-			}
-	        return 1;
-	    }
-		public int idDropped(int par1, Random par2Random, int par3)
-	    {
-			if(par1 == 4){
-				return modItems.pulse.itemID;
-			}
-	        return this.blockID;
 	    }
         
 }
