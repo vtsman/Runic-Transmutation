@@ -1,5 +1,6 @@
 package vtsman.runicTrans;
 
+import vtsman.runicTrans.items.tools.ISpecial;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.item.Item;
@@ -26,6 +27,10 @@ public class energizedEnchant extends Enchantment
     {
         String s = StatCollector.translateToLocal("Infused");
         return s + " " + StatCollector.translateToLocal("enchantment.level." + par1);
+    }
+    public boolean canApply(ItemStack par1ItemStack)
+    {
+        return this.type.canEnchantItem(par1ItemStack.getItem()) && !(par1ItemStack.getItem() instanceof ISpecial);
     }
     /**
      * Returns the maximum value of enchantability nedded on the enchantment level passed.

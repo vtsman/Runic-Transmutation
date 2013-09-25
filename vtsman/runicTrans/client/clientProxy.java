@@ -1,30 +1,37 @@
 package vtsman.runicTrans.client;
 
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.MinecraftForgeClient;
 import vtsman.runicTrans.commonProxy;
 import vtsman.runicTrans.block.modBlocks;
 import vtsman.runicTrans.client.models.renderChargeItem;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
-import cpw.mods.fml.common.network.IGuiHandler;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.World;
-import net.minecraftforge.client.MinecraftForgeClient;
+import cpw.mods.fml.common.registry.VillagerRegistry;
 
 public class clientProxy extends commonProxy {
 	public static int renderPass;
 	public static int twoRenderPass;
 	public static boolean itemPass;
+
 	@Override
-    public void registerTEs()
-    {
-        super.registerTEs();
-    }
+	public void registerTEs() {
+		super.registerTEs();
+	}
+
+	@Override
+	public void addVillager() {
+		super.addVillager();
+		VillagerRegistry.instance().registerVillagerSkin(
+				villagerID,
+				new ResourceLocation("runetrans",
+						"textures/entity/villager.png"));
+	}
+
 	@Override
 	public void registerRenderInformation() {
 		twoRenderPass = RenderingRegistry.getNextAvailableRenderId();
-		System.out.println(twoRenderPass);
-        RenderingRegistry.registerBlockHandler(new TwoLayerRenderer());
+		RenderingRegistry.registerBlockHandler(new TwoLayerRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(
 				vtsman.runicTrans.TE.chargeNode.class,
 				new vtsman.runicTrans.client.models.renderChargeTE());
@@ -36,8 +43,8 @@ public class clientProxy extends commonProxy {
 				new vtsman.runicTrans.client.models.smallTE());
 		MinecraftForgeClient.registerItemRenderer(modBlocks.chargeNode.blockID,
 				new renderChargeItem());
-		//MinecraftForgeClient.registerItemRenderer(modBlocks.texBlock.blockID,
-		//		new renderChargeItem());
+		// MinecraftForgeClient.registerItemRenderer(modBlocks.texBlock.blockID,
+		// new renderChargeItem());
 
 	}
 

@@ -27,18 +27,6 @@ public class transInit {
 		add(32, new ItemStack(Block.sapling, 1, 1));
 		add(32, new ItemStack(Block.sapling, 1, 2));
 		add(32, new ItemStack(Block.sapling, 1, 3));
-		/*for (int i = 0; i < OreDictionary.getOreNames().length; i++) {
-		String oreName = OreDictionary.getOreNames()[i];
-		System.out.println(oreName);
-		if (oreEnergy.containsKey(oreName)) {
-			System.out.println("found");
-			for (int j = 0; j < OreDictionary.getOres(i).size(); j++) {
-				for(int k = 0; k < OreDictionary.getOres(oreName).get(j).get; k++){
-				add(oreEnergy.get(oreName), new ItemStack(OreDictionary.getOres(oreName).get(j).itemID, 1, k));
-				}
-			}
-		}
-	}*/
 		add(16, new ItemStack(Block.planks, 1, 0));
 		add(16, new ItemStack(Block.planks, 1, 1));
 		add(16, new ItemStack(Block.planks, 1, 2));
@@ -49,7 +37,7 @@ public class transInit {
 		add(256, new ItemStack(Item.ingotIron, 1, 0));
 		add(2048, new ItemStack(Item.ingotGold, 1, 0));
 		add(16384, new ItemStack(Item.diamond, 1, 0));
-		add(1304, new ItemStack(Block.blockIron, 1, 0));
+		add(2304, new ItemStack(Block.blockIron, 1, 0));
 		add(18432, new ItemStack(Block.blockGold, 1, 0));
 		add(147456, new ItemStack(Block.blockDiamond, 1, 0));
 		add(512, new ItemStack(Item.enderPearl, 1, 0));
@@ -83,5 +71,30 @@ public class transInit {
         add(16, new ItemStack(Block.netherBrick));
         add(64, new ItemStack(Item.netherQuartz, 1, 0));
         add(256, new ItemStack(Block.blockNetherQuartz, 1, 0));
+        
+        add(24, new ItemStack(Item.silk, 1, 0));
+        add(192, new ItemStack(Item.blazeRod, 1, 0));
+        add(192, new ItemStack(Item.gunpowder, 1, 0));
+        add(96, new ItemStack(Block.cloth, 1, 0));
+        add(4, new ItemStack(Block.cobblestoneMossy, 1, 0));
+        add(24, new ItemStack(Item.rottenFlesh, 1, 0));
+        add(24, new ItemStack(Item.spiderEye, 1, 0));
+        add(24, new ItemStack(Item.bone, 1, 0));
+        add(24, new ItemStack(Item.arrow, 1, 0));
+        add(8, new ItemStack(Item.flint, 1, 0));
+        add(8, new ItemStack(Block.gravel, 1, 0));
+        add(8, new ItemStack(Item.stick, 1, 0));
+        add(8, new ItemStack(Item.feather, 1, 0));
+        add(8, new ItemStack(Item.leather, 1, 0));
+        add(24, new ItemStack(Item.chickenRaw, 1, 0));
+        add(24, new ItemStack(Item.chickenCooked, 1, 0));
+        add(24, new ItemStack(Item.beefRaw, 1, 0));
+        add(24, new ItemStack(Item.beefCooked, 1, 0));
+        add(24, new ItemStack(Item.porkRaw, 1, 0));
+        add(24, new ItemStack(Item.porkCooked, 1, 0));
+        add(24, new ItemStack(Item.redstone, 1, 0));
+        add(192, new ItemStack(Item.dyePowder, 1, 4));
+        add(1728, new ItemStack(Block.blockLapis, 1, 0));
+        
 	}
 }

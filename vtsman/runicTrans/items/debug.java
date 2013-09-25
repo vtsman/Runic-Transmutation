@@ -7,7 +7,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import vtsman.runicTrans.TE.capacitorTE;
-import vtsman.runicTrans.TE.transRuneTE;
 
 public class debug extends Item {
 	public debug(int par1) {
@@ -19,6 +18,8 @@ public class debug extends Item {
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world,
 			int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
 		if (!world.isRemote) {
+			System.out.println(world.getBlockId(x, y, z) + ":"
+					+ world.getBlockMetadata(x, y, z));
 			TileEntity te = world.getBlockTileEntity(x, y, z);
 			if (te instanceof capacitorTE) {
 				((capacitorTE) te).add(100);
@@ -26,6 +27,7 @@ public class debug extends Item {
 		}
 		return true;
 	}
+
 	@Override
 	public void registerIcons(IconRegister ir) {
 		this.itemIcon = ir.registerIcon("runeTrans:debug");

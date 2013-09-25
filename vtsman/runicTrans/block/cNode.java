@@ -5,11 +5,13 @@ import vtsman.runicTrans.TE.IRelay;
 import vtsman.runicTrans.TE.chargeNode;
 import vtsman.runicTrans.items.IChargable;
 import vtsman.runicTrans.items.modItems;
+import vtsman.runicTrans.items.tools.ISpecial;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -81,6 +83,13 @@ public class cNode extends Block {
 						}
 					}
 				}
+				if (stack.itemID == Item.ingotGold.itemID) {
+					if (te.tile() != null) {
+						if (te.tile().remove(200 * stack.stackSize)) {
+							stack.itemID = modItems.hexmetal.itemID;
+						}
+					}
+				}
 				if (stack.getItem() instanceof IChargable) {
 					IChargable charge = (IChargable) stack.getItem();
 					if (stack.getTagCompound() == null) {
@@ -93,6 +102,21 @@ public class cNode extends Block {
 					} else {
 						int c = charge.getRemaining(stack);
 						charge.add(c, stack);
+						te.tile().remove(c);
+					}
+				}
+				if (stack.getItem() instanceof ISpecial) {
+					ISpecial special = (ISpecial) stack.getItem();
+					if (stack.getTagCompound() == null) {
+						stack.stackTagCompound = new NBTTagCompound();
+						stack.getTagCompound().setInteger("cap", 0);
+					}
+					if (special.getRemaining(stack) > te.getRE()) {
+						special.add(te.getRE(), stack);
+						te.tile().remove(te.getRE());
+					} else {
+						int c = special.getRemaining(stack);
+						special.add(c, stack);
 						te.tile().remove(c);
 					}
 				}

@@ -30,7 +30,7 @@ public class runeStone extends IChargable {
 	public void addInformation(ItemStack stack, EntityPlayer par2EntityPlayer,
 			List list, boolean par4) {
 		list.clear();
-		list.add("Fire Rod");
+		list.add("Rune Stone");
 		if (stack.getTagCompound() == null) {
 		stack.stackTagCompound = new NBTTagCompound();
 		}
@@ -38,7 +38,7 @@ public class runeStone extends IChargable {
 				stack.stackTagCompound.setInteger("cap", 0);
 			}
 			
-				list.add("¤b¤oThe stone has "
+				list.add("The stone has "
 						+ stack.getTagCompound().getInteger("cap")
 						+ " out of 300 energy.");
 		}
@@ -56,8 +56,8 @@ public class runeStone extends IChargable {
 			System.out.println("here");
 			TileEntity tile = world.getBlockTileEntity(x, y, z);
 			if (tile instanceof IRelay) {
-				player.addChatMessage("¤eThe stone seems to whipser to you");
-				player.addChatMessage("¤b¤oThere is " + ((IRelay) tile).getRE()
+				player.addChatMessage("The stone seems to whipser to you");
+				player.addChatMessage("There is " + ((IRelay) tile).getRE()
 						+ " energy");
 			}
 			if (player.isSneaking()) {
@@ -95,9 +95,9 @@ public class runeStone extends IChargable {
 				}
 				this.iMode = !this.iMode;
 				if (iMode)
-					player.addChatMessage("¤bItem transmutation mode enabled");
+					player.addChatMessage("Item transmutation mode enabled");
 				else
-					player.addChatMessage("¤bItem transmutation mode disabled");
+					player.addChatMessage("Item transmutation mode disabled");
 				return true;
 			}
 		}

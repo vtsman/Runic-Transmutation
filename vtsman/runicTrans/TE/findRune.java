@@ -21,6 +21,5 @@ public class findRune extends TileEntity{
 			}
 		}
 		Random rand = new Random();
-		e.setVelocity(rand.nextDouble() * 2 - 1d, 1, rand.nextDouble() * 2 - 1d);
 	}
 }

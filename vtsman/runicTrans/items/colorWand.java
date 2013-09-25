@@ -9,9 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import vtsman.runicTrans.TE.capacitorTE;
 import vtsman.runicTrans.TE.colorable;
-import vtsman.runicTrans.TE.transRuneTE;
 
 public class colorWand extends Item {
 	int color = 0xFFFFFF;
@@ -24,6 +22,7 @@ public class colorWand extends Item {
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
 	public void addInformation(ItemStack stack, EntityPlayer par2EntityPlayer,
 			List list, boolean par4) {
 		list.clear();
@@ -50,6 +49,8 @@ public class colorWand extends Item {
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world,
 			int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
 		TileEntity te = world.getBlockTileEntity(x, y, z);
+		player.addChatMessage(world.getBlockId(x, y, z) + ", "
+				+ world.getBlockMetadata(x, y, z));
 		if (te instanceof colorable) {
 			if (player.isSneaking()) {
 				color = ((colorable) te).color;
@@ -60,7 +61,7 @@ public class colorWand extends Item {
 				stack.stackTagCompound.setInteger("g", g);
 				stack.stackTagCompound.setInteger("b", b);
 			}
-			
+
 			else {
 				r = stack.stackTagCompound.getInteger("r");
 				g = stack.stackTagCompound.getInteger("g");

@@ -53,6 +53,7 @@ public class animBlocks1 extends Block implements ICloud{
         	par3List.add(new ItemStack(par1, 1, 4));
         	par3List.add(new ItemStack(par1, 1, 5));
         	par3List.add(new ItemStack(par1, 1, 6));
+        	par3List.add(new ItemStack(par1, 1, 7));
         }
         @SideOnly(Side.CLIENT)
     	public int getBlockColor() {

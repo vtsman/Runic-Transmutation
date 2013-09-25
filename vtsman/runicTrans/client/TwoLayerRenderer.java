@@ -23,10 +23,14 @@ int id;
 				if((id == modBlocks.animBlock.blockID  || id == modBlocks.lumin.blockID) && meta == 0){
             	renderer.renderBlockAsItem(modBlocks.hex, 0, 1f);
             }
-            else if((id == modBlocks.animBlock.blockID  || id == modBlocks.lumin.blockID) && meta == 5){
-            	renderer.renderBlockAsItem(modBlocks.hex, 0, 1f);
-            	renderer.renderBlockAsItem(modBlocks.texBlock, meta, 1f);
-            }
+				else if((id == modBlocks.animBlock.blockID  || id == modBlocks.lumin.blockID) && meta == 5){
+	            	renderer.renderBlockAsItem(modBlocks.hex, 0, 1f);
+	            	//renderer.renderBlockAsItem(modBlocks.texBlock, meta, 1f);
+	            }
+				else if((id == modBlocks.animBlock.blockID  || id == modBlocks.lumin.blockID) && meta == 7){
+	            	//renderer.renderBlockAsItem(modBlocks.te, 0, 1f);
+	            	renderer.renderBlockAsItem(modBlocks.texBlock, 6, 1f);
+	            }
             else{
         	renderer.renderBlockAsItem(modBlocks.texBlock, meta, 1f);
             }
@@ -59,7 +63,11 @@ int id;
             else if((id == modBlocks.animBlock.blockID  || id == modBlocks.lumin.blockID) && meta == 5){
             	renderer.renderStandardBlock(modBlocks.hex, x, y, z);
             	
-            	renderer.renderBlockUsingTexture(modBlocks.texBlock, x, y, z, modBlocks.texBlock.getIcon(0, 5));
+            //	renderer.renderBlockUsingTexture(modBlocks.texBlock, x, y, z, modBlocks.texBlock.getIcon(0, 5));
+            }
+            else if((id == modBlocks.animBlock.blockID  || id == modBlocks.lumin.blockID) && meta == 7){
+            //	renderer.renderStandardBlock(modBlocks.hex, x, y, z);
+            	renderer.renderStandardBlockWithColorMultiplier(modBlocks.hex, x, y, z, 0f, 0f, 0f);
             }
             else{
         	renderer.renderBlockUsingTexture(modBlocks.texBlock, x, y, z, modBlocks.texBlock.getIcon(0, world.getBlockMetadata(x, y, z)));

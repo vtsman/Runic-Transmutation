@@ -92,7 +92,6 @@ public class transRuneTE extends TileEntity implements IRelay{
 			}
 		}
 		Random rand = new Random();
-		e.setVelocity(rand.nextDouble() * 2 - 1d, 1, rand.nextDouble() * 2 - 1d);
 		return false;
 	}
 
