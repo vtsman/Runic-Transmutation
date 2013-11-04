@@ -27,6 +27,7 @@ public class baseMod { // The class file
 
 	public static int guiMorter = 0;
 	public static int guiCentri = 1;
+	public static int guiResearch = 2;
 
 	public static int cap;
 	public static int rune;

@@ -5,27 +5,19 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import vtsman.runicTrans.TE.mortar;
 
-public class morterContainer extends Container {
+public class researchContainer extends Container {
 	protected mortar tileEntity;
 	static final int[] x = { 80, 58, 58, 80, 102, 102, 80 };
 	static final int[] y = { 11, 23, 47, 59, 47, 23, 35 };
 	public Slot[] slots = new Slot[6];
 
-	public morterContainer(InventoryPlayer inventoryPlayer, mortar te) {
-		tileEntity = te;
+	public researchContainer(InventoryPlayer inventoryPlayer, TileEntity te) {
 
 		// the Slot constructor takes the IInventory and the slot number in that
-		// it binds to
-		// and the x-y coordinates it resides on-screen
-
-		for (int j = 0; j < 6; j++) {
-			slots[j] = new Slot(tileEntity, j, x[j], y[j]);
-			addSlotToContainer(slots[j]);
-		}
-		addSlotToContainer(new oneSlot(this, tileEntity, tileEntity, 6, x[6],
-				y[6]));
+		// it binds t
 
 		// commonly used vanilla code that adds the player's inventory
 		bindPlayerInventory(inventoryPlayer);
@@ -40,12 +32,12 @@ public class morterContainer extends Container {
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 9; j++) {
 				addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9,
-						8 + j * 18, 84 + i * 18));
+						8 + j * 18 - 1, 84 + i * 18 - 3));
 			}
 		}
 
 		for (int i = 0; i < 9; i++) {
-			addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 142));
+			addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18 - 1, 139));
 		}
 	}
 

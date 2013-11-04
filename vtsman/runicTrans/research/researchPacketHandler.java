@@ -75,7 +75,8 @@ public class researchPacketHandler {
 						bool[i] = tag.getBoolean(Integer.toString(i));
 					}
 				}
-				researchManager.playerResearches = bool;
+				researchManager.playerResearches.put((EntityPlayer) player,
+						bool);
 			}
 		}
 	}

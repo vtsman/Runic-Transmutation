@@ -2,10 +2,10 @@ package vtsman.runicTrans.items;
 
 import java.util.List;
 
-import vtsman.runicTrans.stackUtils;
 import vtsman.runicTrans.TE.IRelay;
 import vtsman.runicTrans.TE.transRuneTE;
 import vtsman.runicTrans.transmute.transmuteManager;
+import vtsman.runicTrans.utils.stackUtils;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;

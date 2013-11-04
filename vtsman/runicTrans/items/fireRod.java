@@ -15,7 +15,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
-import vtsman.runicTrans.stackUtils;
+import vtsman.runicTrans.utils.stackUtils;
 
 public class fireRod extends IChargable {
 

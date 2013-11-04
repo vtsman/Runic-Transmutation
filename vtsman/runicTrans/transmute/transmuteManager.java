@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import vtsman.runicTrans.stackUtils;
+import vtsman.runicTrans.utils.stackUtils;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;

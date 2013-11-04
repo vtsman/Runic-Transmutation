@@ -23,14 +23,17 @@ public class modBlocks {
 	public static Block morter;
 	public static Block rBlock;
 
+	// public static Block testPart = new particalBlock(1000, Material.air)
+	// .setCreativeTab(tabs.tabRune);
+
 	// public static Block relay;
 	public static void init() {
 		pane = new hexGlassPane(baseMod.pane, "", "", Material.glass, true)
 				.setHardness(.5f).setCreativeTab(tabs.tabPretties)
 				.setUnlocalizedName("pane");
 		rune = new rune(baseMod.rune, Material.rock).setUnlocalizedName("rune");
-		rBlock = new resBlock(baseMod.resBlock, Material.rock).setCreativeTab(
-				tabs.tabRune).setUnlocalizedName("resBlock");
+		rBlock = new resBlock(baseMod.resBlock, Material.rock)
+				.setCreativeTab(tabs.tabRune);// .setUnlocalizedName("resBlock");
 		hex = new hexGlass(baseMod.hex, Material.glass)
 				.setCreativeTab(tabs.tabPretties).setHardness(2f)
 				.setUnlocalizedName("hex");
@@ -62,6 +65,7 @@ public class modBlocks {
 		GameRegistry.registerBlock(pulse, "pulserend");
 		GameRegistry.registerBlock(morter, iGlass.class, "Mortar");
 		GameRegistry.registerBlock(texBlock, "texBlock");
+		// GameRegistry.registerBlock(testPart, "testPart");
 		GameRegistry.registerBlock(rune, "transmutation rune");
 		GameRegistry.registerBlock(lumin, iGlass.class, "luminblock");
 		GameRegistry.registerBlock(animBlock, iGlass.class, "animBlock1");

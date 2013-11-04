@@ -1,4 +1,4 @@
-package vtsman.runicTrans;
+package vtsman.runicTrans.utils;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

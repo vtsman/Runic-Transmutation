@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 import net.minecraft.item.ItemStack;
-import vtsman.runicTrans.colorUtils;
-import vtsman.runicTrans.stackUtils;
+import vtsman.runicTrans.utils.colorUtils;
+import vtsman.runicTrans.utils.stackUtils;
 
 public class AspectRegistry {
 	public static Map<Integer, List<AspectStack>[]> aspectMap = new HashMap<Integer, List<AspectStack>[]>();
@@ -59,6 +59,9 @@ public class AspectRegistry {
 	}
 
 	public static List<AspectStack> getAspectsFromStacksArr(ItemStack[] stacks) {
+		for (ItemStack s : stacks) {
+			System.out.println(s);
+		}
 		if (stacks != null) {
 			List<AspectStack> out = new ArrayList<AspectStack>();
 			for (int i = 0; i < stacks.length; i++) {
@@ -94,6 +97,7 @@ public class AspectRegistry {
 	}
 
 	public static int getColorFromAspects(List<AspectStack> s) {
+
 		if (s != null) {
 			int avgDiv = 0;
 			int r = 0;
@@ -126,14 +130,21 @@ public class AspectRegistry {
 		return out;
 	}
 
+	public static ArrayList<AspectStack> clone(List<AspectStack> list) {
+		ArrayList<AspectStack> out = new ArrayList<AspectStack>();
+		for (AspectStack s : list) {
+			out.add(s.copy());
+		}
+		return out;
+	}
+
 	public static List<AspectStack> getAspects(ItemStack s) {
 		if (aspectMap.containsKey(s.itemID) && s.getItemDamage() < 16) {
-			List<AspectStack> out = aspectMap.get(s.itemID)[s.getItemDamage()];
+			List<AspectStack> out = clone(aspectMap.get(s.itemID)[s
+					.getItemDamage()]);
 			if (out != null) {
 				for (int i = 0; i < out.size(); i++) {
-					AspectStack o = out.get(i).copy();
-					o.amount *= s.stackSize;
-					out.set(i, o);
+					out.get(i).amount *= s.stackSize;
 				}
 			}
 			return out;
@@ -146,7 +157,7 @@ public class AspectRegistry {
 		for (int i = 0; i < l.size(); i++) {
 			if (l.get(i) != null) {
 				if (l.get(i).id == a.id) {
-					AspectStack out = l.get(i).copy();
+					AspectStack out = l.get(i);
 					out.amount += a.amount;
 					l.set(i, out);
 					return;

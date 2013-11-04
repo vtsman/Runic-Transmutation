@@ -5,20 +5,24 @@ import net.minecraft.world.World;
 
 public class researchMultiblock {
 	public static boolean isMultiblockValid(World w, int x, int y, int z) {
-		int right = 2;
+		int right = 0;
 
 		if (xArch(w, x, y, z + 5)) {
+			System.out.println(1);
 			right++;
 		}
 		if (xArch(w, x, y, z - 5)) {
+			System.out.println(2);
 			right++;
 		}
 
 		if (zArch(w, x + 5, y, z)) {
+			System.out.println(3);
 			right++;
 		}
 
 		if (zArch(w, x - 5, y, z)) {
+			System.out.println(4);
 			right++;
 		}
 		return right == 4;
@@ -35,8 +39,8 @@ public class researchMultiblock {
 	static int[][] zmetas = { { 0, 0, 7, 0, 0 }, { 0, 2, 0, 3, 0 },
 			{ 2, 7, 15, 6, 3 }, { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 },
 			{ 0, 0, 0, 0, 0 } };
-	static int[][] xmetas = { { 0, 0, 7, 0, 0 }, { 0, 1, 0, 0, 0 },
-			{ 1, 7, 15, 6, 0 }, { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 },
+	static int[][] xmetas = { { 0, 0, 7, 0, 0 }, { 0, 0, 0, 1, 0 },
+			{ 0, 5, 15, 4, 1 }, { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 },
 			{ 0, 0, 0, 0, 0 } };
 
 	// Increment Z for this function
@@ -62,7 +66,7 @@ public class researchMultiblock {
 			for (int j = 5; j >= 0; j--) {
 				int id = w.getBlockId(x, y + 5 - j, z - 2 + i);
 				int meta = w.getBlockMetadata(x, y + 5 - j, z - 2 + i);
-				if (ids[j][i] == id) {
+				if (ids[j][i] == id && zmetas[j][i] == meta) {
 					check--;
 				}
 			}

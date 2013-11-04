@@ -1,6 +1,6 @@
 package vtsman.runicTrans.TE;
 
-import vtsman.runicTrans.stackUtils;
+import vtsman.runicTrans.utils.stackUtils;
 import net.minecraft.item.ItemStack;
 
 public class shapelessMortar implements IMorter{

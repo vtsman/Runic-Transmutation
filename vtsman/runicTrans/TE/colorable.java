@@ -1,8 +1,8 @@
 package vtsman.runicTrans.TE;
 
-import vtsman.runicTrans.packetHandler;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import vtsman.runicTrans.packetHandler;
 
 public class colorable extends TileEntity {
 	public int color = 0xFFFFFF;
@@ -10,25 +10,29 @@ public class colorable extends TileEntity {
 	public int g = 0xFF;
 	public int b = 0xFF;
 
+	@Override
 	public void readFromNBT(NBTTagCompound data) {
 		super.readFromNBT(data);
 		this.color = data.getInteger("color");
 		this.r = data.getInteger("r");
 		this.g = data.getInteger("g");
 		this.b = data.getInteger("b");
-		//System.out.println(this.r);
+		// System.out.println(this.r);
 	}
+
 	int i = 0;
+
 	@Override
-	public void updateEntity(){
+	public void updateEntity() {
 		i++;
-		if(i == 20){
+		if (i == 20) {
 			i = 0;
 			packetHandler.sendPacket(this);
-			this.worldObj.markBlockForRenderUpdate(this.xCoord, this.yCoord, this.zCoord);
+			this.worldObj.markBlockForRenderUpdate(this.xCoord, this.yCoord,
+					this.zCoord);
 		}
 	}
-	
+
 	public void add(String s, int c) {
 		if (s == "r") {
 			if (r + c <= 0xFF) {
@@ -67,7 +71,8 @@ public class colorable extends TileEntity {
 		color = r * 0x10000 + g * 0x100 + b;
 	}
 
-	public void writeToNBT(NBTTagCompound data) {		
+	@Override
+	public void writeToNBT(NBTTagCompound data) {
 		super.writeToNBT(data);
 		data.setInteger("color", this.color);
 		data.setInteger("r", this.r);

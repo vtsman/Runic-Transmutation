@@ -1,23 +1,9 @@
 package vtsman.runicTrans.block;
 
-import static net.minecraftforge.common.ForgeDirection.DOWN;
-import static net.minecraftforge.common.ForgeDirection.UP;
-
 import java.util.HashMap;
 import java.util.List;
 
-import vtsman.runicTrans.packetHandler;
-import vtsman.runicTrans.TE.colorable;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockBreakable;
-import net.minecraft.block.BlockFarmland;
-import net.minecraft.block.BlockGlass;
-import net.minecraft.block.BlockHalfSlab;
-import net.minecraft.block.BlockHopper;
-import net.minecraft.block.BlockPoweredOre;
-import net.minecraft.block.BlockStairs;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -26,10 +12,13 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
-import net.minecraft.world.ColorizerGrass;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
+import vtsman.runicTrans.packetHandler;
+import vtsman.runicTrans.TE.colorable;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class hexGlass extends BlockBreakable {
 	int iColor = 0xFFFFFF;
@@ -41,21 +30,27 @@ public class hexGlass extends BlockBreakable {
 
 		// TODO Auto-generated constructor stub
 	}
-	public Icon getIcon(int par1, int par2)
-    {
-		if(par2 == 1)
+
+	@Override
+	public Icon getIcon(int par1, int par2) {
+		if (par2 == 1) {
 			return this.icons.get("fnnnn");
-        return this.icons.get("nnnn");
-    }
-	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List)
-    {
+		}
+		return this.icons.get("nnnn");
+	}
+
+	@Override
+	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs,
+			List par3List) {
 		par3List.add(new ItemStack(par1, 1, 0));
 		par3List.add(new ItemStack(par1, 1, 1));
-    }
-	public int getRenderBlockPass()
-    {
-        return 1;
-    }
+	}
+
+	@Override
+	public int getRenderBlockPass() {
+		return 1;
+	}
+
 	@Override
 	public Icon getBlockTexture(IBlockAccess world, int x, int y, int z,
 			int side) {
@@ -68,99 +63,150 @@ public class hexGlass extends BlockBreakable {
 		boolean[] sides = new boolean[4];
 		boolean[] corner = new boolean[4];
 		if (side == 0) {
-			sides[0] = world.getBlockId(x - 1, y, z) == bid && world.getBlockMetadata(x - 1, y, z) == meta;
-			sides[1] = world.getBlockId(x, y, z - 1) == bid && world.getBlockMetadata(x, y, z - 1) == meta;
-			sides[2] = world.getBlockId(x + 1, y, z) == bid && world.getBlockMetadata(x + 1, y, z) == meta;
-			sides[3] = world.getBlockId(x, y, z + 1) == bid && world.getBlockMetadata(x, y, z + 1) == meta;
+			sides[0] = world.getBlockId(x - 1, y, z) == bid
+					&& world.getBlockMetadata(x - 1, y, z) == meta;
+			sides[1] = world.getBlockId(x, y, z - 1) == bid
+					&& world.getBlockMetadata(x, y, z - 1) == meta;
+			sides[2] = world.getBlockId(x + 1, y, z) == bid
+					&& world.getBlockMetadata(x + 1, y, z) == meta;
+			sides[3] = world.getBlockId(x, y, z + 1) == bid
+					&& world.getBlockMetadata(x, y, z + 1) == meta;
 			corner[0] = sides[0] && sides[1]
-					&& world.getBlockId(x - 1, y, z - 1) == bid && world.getBlockMetadata(x - 1, y, z - 1) == meta;
+					&& world.getBlockId(x - 1, y, z - 1) == bid
+					&& world.getBlockMetadata(x - 1, y, z - 1) == meta;
 			corner[1] = sides[1] && sides[2]
-					&& world.getBlockId(x + 1, y, z - 1) == bid && world.getBlockMetadata(x + 1, y, z - 1) == meta;
+					&& world.getBlockId(x + 1, y, z - 1) == bid
+					&& world.getBlockMetadata(x + 1, y, z - 1) == meta;
 			corner[2] = sides[2] && sides[3]
-					&& world.getBlockId(x + 1, y, z + 1) == bid && world.getBlockMetadata(x + 1, y, z + 1) == meta;
+					&& world.getBlockId(x + 1, y, z + 1) == bid
+					&& world.getBlockMetadata(x + 1, y, z + 1) == meta;
 			corner[3] = sides[3] && sides[0]
-					&& world.getBlockId(x - 1, y, z + 1) == bid && world.getBlockMetadata(x - 1, y, z + 1) == meta;
+					&& world.getBlockId(x - 1, y, z + 1) == bid
+					&& world.getBlockMetadata(x - 1, y, z + 1) == meta;
 		}
 		if (side == 1) {
-			sides[0] = world.getBlockId(x - 1, y, z) == bid && world.getBlockMetadata(x - 1, y, z) == meta;
-			sides[1] = world.getBlockId(x, y, z - 1) == bid && world.getBlockMetadata(x, y, z - 1) == meta;
-			sides[2] = world.getBlockId(x + 1, y, z) == bid && world.getBlockMetadata(x + 1, y, z) == meta;
-			sides[3] = world.getBlockId(x, y, z + 1) == bid && world.getBlockMetadata(x, y, z + 1) == meta;
+			sides[0] = world.getBlockId(x - 1, y, z) == bid
+					&& world.getBlockMetadata(x - 1, y, z) == meta;
+			sides[1] = world.getBlockId(x, y, z - 1) == bid
+					&& world.getBlockMetadata(x, y, z - 1) == meta;
+			sides[2] = world.getBlockId(x + 1, y, z) == bid
+					&& world.getBlockMetadata(x + 1, y, z) == meta;
+			sides[3] = world.getBlockId(x, y, z + 1) == bid
+					&& world.getBlockMetadata(x, y, z + 1) == meta;
 			corner[0] = sides[0] && sides[1]
-					&& world.getBlockId(x - 1, y, z - 1) == bid && world.getBlockMetadata(x - 1, y, z - 1) == meta;
+					&& world.getBlockId(x - 1, y, z - 1) == bid
+					&& world.getBlockMetadata(x - 1, y, z - 1) == meta;
 			corner[1] = sides[1] && sides[2]
-					&& world.getBlockId(x + 1, y, z - 1) == bid && world.getBlockMetadata(x + 1, y, z - 1) == meta;
+					&& world.getBlockId(x + 1, y, z - 1) == bid
+					&& world.getBlockMetadata(x + 1, y, z - 1) == meta;
 			corner[2] = sides[2] && sides[3]
-					&& world.getBlockId(x + 1, y, z + 1) == bid && world.getBlockMetadata(x + 1, y, z + 1) == meta;
+					&& world.getBlockId(x + 1, y, z + 1) == bid
+					&& world.getBlockMetadata(x + 1, y, z + 1) == meta;
 			corner[3] = sides[3] && sides[0]
-					&& world.getBlockId(x - 1, y, z + 1) == bid && world.getBlockMetadata(x - 1, y, z + 1) == meta;
+					&& world.getBlockId(x - 1, y, z + 1) == bid
+					&& world.getBlockMetadata(x - 1, y, z + 1) == meta;
 		}
 		if (side == 2) {
-			sides[0] = world.getBlockId(x + 1, y, z) == bid && world.getBlockMetadata(x + 1, y, z) == meta;
-			sides[1] = world.getBlockId(x, y + 1, z) == bid && world.getBlockMetadata(x, y + 1, z) == meta;
-			sides[2] = world.getBlockId(x - 1, y, z) == bid && world.getBlockMetadata(x - 1, y, z) == meta;
-			sides[3] = world.getBlockId(x, y - 1, z) == bid && world.getBlockMetadata(x, y - 1, z) == meta;
+			sides[0] = world.getBlockId(x + 1, y, z) == bid
+					&& world.getBlockMetadata(x + 1, y, z) == meta;
+			sides[1] = world.getBlockId(x, y + 1, z) == bid
+					&& world.getBlockMetadata(x, y + 1, z) == meta;
+			sides[2] = world.getBlockId(x - 1, y, z) == bid
+					&& world.getBlockMetadata(x - 1, y, z) == meta;
+			sides[3] = world.getBlockId(x, y - 1, z) == bid
+					&& world.getBlockMetadata(x, y - 1, z) == meta;
 			corner[0] = sides[0] && sides[1]
-					&& world.getBlockId(x + 1, y + 1, z) == bid && world.getBlockMetadata(x + 1, y + 1, z) == meta;
+					&& world.getBlockId(x + 1, y + 1, z) == bid
+					&& world.getBlockMetadata(x + 1, y + 1, z) == meta;
 			corner[1] = sides[1] && sides[2]
-					&& world.getBlockId(x - 1, y + 1, z) == bid && world.getBlockMetadata(x - 1, y + 1, z) == meta;
+					&& world.getBlockId(x - 1, y + 1, z) == bid
+					&& world.getBlockMetadata(x - 1, y + 1, z) == meta;
 			corner[2] = sides[2] && sides[3]
-					&& world.getBlockId(x - 1, y - 1, z) == bid && world.getBlockMetadata(x - 1, y - 1, z) == meta;
+					&& world.getBlockId(x - 1, y - 1, z) == bid
+					&& world.getBlockMetadata(x - 1, y - 1, z) == meta;
 			corner[3] = sides[3] && sides[0]
-					&& world.getBlockId(x + 1, y - 1, z) == bid && world.getBlockMetadata(x + 1, y - 1, z) == meta;
+					&& world.getBlockId(x + 1, y - 1, z) == bid
+					&& world.getBlockMetadata(x + 1, y - 1, z) == meta;
 		}
 		if (side == 3) {
-			sides[0] = world.getBlockId(x - 1, y, z) == bid && world.getBlockMetadata(x - 1, y, z) == meta;
-			sides[1] = world.getBlockId(x, y + 1, z) == bid && world.getBlockMetadata(x, y + 1, z) == meta;
-			sides[2] = world.getBlockId(x + 1, y, z) == bid && world.getBlockMetadata(x + 1, y, z) == meta;
-			sides[3] = world.getBlockId(x, y - 1, z) == bid && world.getBlockMetadata(x, y - 1, z) == meta;
+			sides[0] = world.getBlockId(x - 1, y, z) == bid
+					&& world.getBlockMetadata(x - 1, y, z) == meta;
+			sides[1] = world.getBlockId(x, y + 1, z) == bid
+					&& world.getBlockMetadata(x, y + 1, z) == meta;
+			sides[2] = world.getBlockId(x + 1, y, z) == bid
+					&& world.getBlockMetadata(x + 1, y, z) == meta;
+			sides[3] = world.getBlockId(x, y - 1, z) == bid
+					&& world.getBlockMetadata(x, y - 1, z) == meta;
 			corner[0] = sides[0] && sides[1]
-					&& world.getBlockId(x - 1, y + 1, z) == bid && world.getBlockMetadata(x - 1, y + 1, z) == meta;
+					&& world.getBlockId(x - 1, y + 1, z) == bid
+					&& world.getBlockMetadata(x - 1, y + 1, z) == meta;
 			corner[1] = sides[1] && sides[2]
-					&& world.getBlockId(x + 1, y + 1, z) == bid && world.getBlockMetadata(x + 1, y + 1, z) == meta;
+					&& world.getBlockId(x + 1, y + 1, z) == bid
+					&& world.getBlockMetadata(x + 1, y + 1, z) == meta;
 			corner[2] = sides[2] && sides[3]
-					&& world.getBlockId(x + 1, y - 1, z) == bid && world.getBlockMetadata(x + 1, y - 1, z) == meta;
+					&& world.getBlockId(x + 1, y - 1, z) == bid
+					&& world.getBlockMetadata(x + 1, y - 1, z) == meta;
 			corner[3] = sides[3] && sides[0]
-					&& world.getBlockId(x - 1, y - 1, z) == bid && world.getBlockMetadata(x - 1, y - 1, z) == meta;
+					&& world.getBlockId(x - 1, y - 1, z) == bid
+					&& world.getBlockMetadata(x - 1, y - 1, z) == meta;
 		}
 		if (side == 4) {
-			sides[0] = world.getBlockId(x, y, z - 1) == bid && world.getBlockMetadata(x, y, z - 1) == meta;
-			sides[1] = world.getBlockId(x, y + 1, z) == bid && world.getBlockMetadata(x, y + 1, z) == meta;
-			sides[2] = world.getBlockId(x, y, z + 1) == bid && world.getBlockMetadata(x, y, z + 1) == meta;
-			sides[3] = world.getBlockId(x, y - 1, z) == bid && world.getBlockMetadata(x, y - 1, z) == meta;
+			sides[0] = world.getBlockId(x, y, z - 1) == bid
+					&& world.getBlockMetadata(x, y, z - 1) == meta;
+			sides[1] = world.getBlockId(x, y + 1, z) == bid
+					&& world.getBlockMetadata(x, y + 1, z) == meta;
+			sides[2] = world.getBlockId(x, y, z + 1) == bid
+					&& world.getBlockMetadata(x, y, z + 1) == meta;
+			sides[3] = world.getBlockId(x, y - 1, z) == bid
+					&& world.getBlockMetadata(x, y - 1, z) == meta;
 			corner[0] = sides[0] && sides[1]
-					&& world.getBlockId(x, y + 1, z - 1) == bid && world.getBlockMetadata(x, y + 1, z - 1) == meta;
+					&& world.getBlockId(x, y + 1, z - 1) == bid
+					&& world.getBlockMetadata(x, y + 1, z - 1) == meta;
 			corner[1] = sides[1] && sides[2]
-					&& world.getBlockId(x, y + 1, z + 1) == bid && world.getBlockMetadata(x, y + 1, z + 1) == meta;
+					&& world.getBlockId(x, y + 1, z + 1) == bid
+					&& world.getBlockMetadata(x, y + 1, z + 1) == meta;
 			corner[2] = sides[2] && sides[3]
-					&& world.getBlockId(x, y - 1, z + 1) == bid && world.getBlockMetadata(x, y - 1, z + 1) == meta;
+					&& world.getBlockId(x, y - 1, z + 1) == bid
+					&& world.getBlockMetadata(x, y - 1, z + 1) == meta;
 			corner[3] = sides[3] && sides[0]
-					&& world.getBlockId(x, y - 1, z - 1) == bid && world.getBlockMetadata(x, y - 1, z - 1) == meta;
+					&& world.getBlockId(x, y - 1, z - 1) == bid
+					&& world.getBlockMetadata(x, y - 1, z - 1) == meta;
 		}
 		if (side == 5) {
-			sides[0] = world.getBlockId(x, y, z + 1) == bid && world.getBlockMetadata(x, y, z + 1) == meta;
-			sides[1] = world.getBlockId(x, y + 1, z) == bid && world.getBlockMetadata(x, y + 1, z) == meta;
-			sides[2] = world.getBlockId(x, y, z - 1) == bid && world.getBlockMetadata(x, y, z - 1) == meta;
-			sides[3] = world.getBlockId(x, y - 1, z) == bid && world.getBlockMetadata(x, y - 1, z) == meta;
+			sides[0] = world.getBlockId(x, y, z + 1) == bid
+					&& world.getBlockMetadata(x, y, z + 1) == meta;
+			sides[1] = world.getBlockId(x, y + 1, z) == bid
+					&& world.getBlockMetadata(x, y + 1, z) == meta;
+			sides[2] = world.getBlockId(x, y, z - 1) == bid
+					&& world.getBlockMetadata(x, y, z - 1) == meta;
+			sides[3] = world.getBlockId(x, y - 1, z) == bid
+					&& world.getBlockMetadata(x, y - 1, z) == meta;
 			corner[0] = sides[0] && sides[1]
-					&& world.getBlockId(x, y + 1, z + 1) == bid && world.getBlockMetadata(x, y + 1, z + 1) == meta;
+					&& world.getBlockId(x, y + 1, z + 1) == bid
+					&& world.getBlockMetadata(x, y + 1, z + 1) == meta;
 			corner[1] = sides[1] && sides[2]
-					&& world.getBlockId(x, y + 1, z - 1) == bid && world.getBlockMetadata(x, y + 1, z - 1) == meta;
+					&& world.getBlockId(x, y + 1, z - 1) == bid
+					&& world.getBlockMetadata(x, y + 1, z - 1) == meta;
 			corner[2] = sides[2] && sides[3]
-					&& world.getBlockId(x, y - 1, z - 1) == bid && world.getBlockMetadata(x, y - 1, z - 1) == meta;
+					&& world.getBlockId(x, y - 1, z - 1) == bid
+					&& world.getBlockMetadata(x, y - 1, z - 1) == meta;
 			corner[3] = sides[3] && sides[0]
-					&& world.getBlockId(x, y - 1, z + 1) == bid && world.getBlockMetadata(x, y - 1, z + 1) == meta;
+					&& world.getBlockId(x, y - 1, z + 1) == bid
+					&& world.getBlockMetadata(x, y - 1, z + 1) == meta;
 		}
 		String texture = "";
-		if(world.getBlockMetadata(x, y, z) == 1)
+		if (world.getBlockMetadata(x, y, z) == 1) {
 			texture = texture + "f";
+		}
 		for (int i = 0; i < 4; i++) {
-			if (sides[i])
+			if (sides[i]) {
 				texture = texture + "s";
-			else
+			} else {
 				texture = texture + "n";
-			if (corner[i])
+			}
+			if (corner[i]) {
 				texture = texture + "c";
+			}
 		}
 		/*
 		 * System.out.println(side); for(int i = 0; i < 9; i++){
@@ -170,55 +216,63 @@ public class hexGlass extends BlockBreakable {
 		return icons.get(texture);
 	}
 
+	@Override
 	public void onBlockClicked(World world, int x, int y, int z,
 			EntityPlayer player) {
 		int id = world.getBlockId(x, y, z);
-		if(id == modBlocks.hex.blockID){
-		ItemStack i = player.getHeldItem();
-		colorable c = (colorable) world.getBlockTileEntity(x, y, z);
-		if (i != null) {
-			if (i.itemID == Item.dyePowder.itemID) {
-				if (i.getItemDamage() == 1)
-					c.sub("r", 0x08);
-				if (i.getItemDamage() == 2)
-					c.sub("g", 0x08);
-				if (i.getItemDamage() == 4) {
-					c.sub("b", 0x08);
+		if (id == modBlocks.hex.blockID) {
+			ItemStack i = player.getHeldItem();
+			colorable c = (colorable) world.getBlockTileEntity(x, y, z);
+			if (i != null) {
+				if (i.itemID == Item.dyePowder.itemID) {
+					if (i.getItemDamage() == 1) {
+						c.sub("r", 0x08);
+					}
+					if (i.getItemDamage() == 2) {
+						c.sub("g", 0x08);
+					}
+					if (i.getItemDamage() == 4) {
+						c.sub("b", 0x08);
+					}
 				}
 			}
-		}
-		packetHandler.sendPacket(world.getBlockTileEntity(x, y, z));
-		world.markBlockForRenderUpdate(x, y, z);
+			packetHandler.sendPacket(world.getBlockTileEntity(x, y, z));
+			world.markBlockForRenderUpdate(x, y, z);
 		}
 	}
 
+	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z,
 			EntityPlayer player, int par6, float par7, float par8, float par9) {
 		int id = world.getBlockId(x, y, z);
-		if(id == modBlocks.hex.blockID){
-		ItemStack i = player.getHeldItem();
-		colorable c = (colorable) world.getBlockTileEntity(x, y, z);
-		if (i != null) {
-			if (i.itemID == Item.dyePowder.itemID) {
-				if (i.getItemDamage() == 1)
-					c.add("r", 0x08);
-				if (i.getItemDamage() == 2)
-					c.add("g", 0x08);
-				if (i.getItemDamage() == 4) {
-					c.add("b", 0x08);
+		if (id == modBlocks.hex.blockID) {
+			ItemStack i = player.getHeldItem();
+			colorable c = (colorable) world.getBlockTileEntity(x, y, z);
+			if (i != null) {
+				if (i.itemID == Item.dyePowder.itemID) {
+					if (i.getItemDamage() == 1) {
+						c.add("r", 0x08);
+					}
+					if (i.getItemDamage() == 2) {
+						c.add("g", 0x08);
+					}
+					if (i.getItemDamage() == 4) {
+						c.add("b", 0x08);
+					}
+					packetHandler.sendPacket(world.getBlockTileEntity(x, y, z));
+					world.markBlockForRenderUpdate(x, y, z);
 				}
-	    		packetHandler.sendPacket(world.getBlockTileEntity(x, y, z));
-				world.markBlockForRenderUpdate(x, y, z);
 			}
-		}
 		}
 		return false;
 	}
 
+	@Override
 	public boolean isOpaqueCube() {
 		return false;
 	}
 
+	@Override
 	public boolean hasTileEntity(int metadata) {
 		return true;
 	}
@@ -227,15 +281,18 @@ public class hexGlass extends BlockBreakable {
 	 * If this block doesn't render as an ordinary block it will return False
 	 * (examples: signs, buttons, stairs, etc)
 	 */
+	@Override
 	public boolean renderAsNormalBlock() {
 		return false;
 	}
 
+	@Override
 	@SideOnly(Side.CLIENT)
 	public int getBlockColor() {
 		return iColor;
 	}
 
+	@Override
 	public void registerIcons(IconRegister ir) {
 		this.blockIcon = ir.registerIcon("runetrans:nnnn");
 		addI(ir, "nnnn");
@@ -284,7 +341,7 @@ public class hexGlass extends BlockBreakable {
 		addI(ir, "ssssc");
 		addI(ir, "nnnn");
 		addI(ir, "ssscsc");
-		
+
 		addI(ir, "fnnnn");
 		addI(ir, "fnnns");
 		addI(ir, "fnnscs");
@@ -337,6 +394,7 @@ public class hexGlass extends BlockBreakable {
 		this.icons.put(s, ir.registerIcon("runetrans:" + s));
 	}
 
+	@Override
 	@SideOnly(Side.CLIENT)
 	/**
 	 * Returns the color this block should be rendered. Used by leaves.
@@ -355,19 +413,23 @@ public class hexGlass extends BlockBreakable {
 	 * against the blocks color. Note only called when first determining what to
 	 * render.
 	 */
+	@Override
 	public int colorMultiplier(IBlockAccess access, int x, int y, int z) {
-		if(access.getBlockTileEntity(x, y, z) != null){
-		colorable c = (colorable) access.getBlockTileEntity(x, y, z);
-		return c.color;
+		if (access.getBlockTileEntity(x, y, z) != null) {
+			colorable c = (colorable) access.getBlockTileEntity(x, y, z);
+			return c.color;
 		}
 		return 0x000000;
 	}
-	 public int damageDropped(int par1)
-	    {
-	        return par1;
-	    }
-	 public boolean isBlockSolidOnSide(World world, int x, int y, int z, ForgeDirection side)
-	    {
-	        return true;
-	    }
+
+	@Override
+	public int damageDropped(int par1) {
+		return par1;
+	}
+
+	@Override
+	public boolean isBlockSolidOnSide(World world, int x, int y, int z,
+			ForgeDirection side) {
+		return true;
+	}
 }
