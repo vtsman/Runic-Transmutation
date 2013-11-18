@@ -7,13 +7,13 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import vtsman.runicTrans.TE.mortar;
 
-public class morterContainer extends Container {
+public class mortarContainer extends Container {
 	protected mortar tileEntity;
 	static final int[] x = { 80, 58, 58, 80, 102, 102, 80 };
 	static final int[] y = { 11, 23, 47, 59, 47, 23, 35 };
 	public Slot[] slots = new Slot[6];
 
-	public morterContainer(InventoryPlayer inventoryPlayer, mortar te) {
+	public mortarContainer(InventoryPlayer inventoryPlayer, mortar te) {
 		tileEntity = te;
 
 		// the Slot constructor takes the IInventory and the slot number in that

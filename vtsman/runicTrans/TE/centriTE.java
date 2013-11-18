@@ -1,6 +1,6 @@
 package vtsman.runicTrans.TE;
 
-import vtsman.runicTrans.client.gui.morterContainer;
+import vtsman.runicTrans.client.gui.mortarContainer;
 import vtsman.runicTrans.items.mixedDust;
 import vtsman.runicTrans.items.modItems;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,7 +14,7 @@ import net.minecraft.tileentity.TileEntity;
 
 public class centriTE extends TileEntity implements IInventory, ISidedInventory {
 	ItemStack[] inv = new ItemStack[7];
-	public morterContainer cont;
+	public mortarContainer cont;
 	public centriTE() {
 
 	}
@@ -57,7 +57,6 @@ public class centriTE extends TileEntity implements IInventory, ISidedInventory 
 		if (stack != null && stack.stackSize > getInventoryStackLimit()) {
 			stack.stackSize = getInventoryStackLimit();
 		}
-		this.invUpdate(slot);
 	}
 
 	@Override
@@ -75,7 +74,6 @@ public class centriTE extends TileEntity implements IInventory, ISidedInventory 
 			}
 		}
 
-		this.invUpdate(slot);
 		return stack;
 	}
 
@@ -121,10 +119,7 @@ public class centriTE extends TileEntity implements IInventory, ISidedInventory 
 			}
 		}
 	}
-	
-	public void invUpdate(int i) {
-		
-	}
+
 
 	@Override
 	public void writeToNBT(NBTTagCompound tagCompound) {
@@ -146,16 +141,6 @@ public class centriTE extends TileEntity implements IInventory, ISidedInventory 
 	@Override
 	public String getInvName() {
 		return "mod.vtsman_hodgecraft.shelfTE";
-	}
-
-	public boolean func_94042_c() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public boolean func_94041_b(int i, ItemStack itemstack) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 	@Override

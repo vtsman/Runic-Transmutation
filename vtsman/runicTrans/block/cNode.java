@@ -3,7 +3,7 @@ package vtsman.runicTrans.block;
 import vtsman.runicTrans.baseMod;
 import vtsman.runicTrans.TE.IRelay;
 import vtsman.runicTrans.TE.chargeNode;
-import vtsman.runicTrans.items.IChargable;
+import vtsman.runicTrans.items.Chargable;
 import vtsman.runicTrans.items.modItems;
 import vtsman.runicTrans.items.tools.ISpecial;
 import net.minecraft.block.Block;
@@ -90,8 +90,8 @@ public class cNode extends Block {
 						}
 					}
 				}
-				if (stack.getItem() instanceof IChargable) {
-					IChargable charge = (IChargable) stack.getItem();
+				if (stack.getItem() instanceof Chargable) {
+					Chargable charge = (Chargable) stack.getItem();
 					if (stack.getTagCompound() == null) {
 						stack.stackTagCompound = new NBTTagCompound();
 						stack.getTagCompound().setInteger("cap", 0);

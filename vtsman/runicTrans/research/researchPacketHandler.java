@@ -77,6 +77,7 @@ public class researchPacketHandler {
 				}
 				researchManager.playerResearches.put((EntityPlayer) player,
 						bool);
+				researchManager.keyNew.put((EntityPlayer) player, researchManager.keyNew.get(player) + 1);
 			}
 		}
 	}

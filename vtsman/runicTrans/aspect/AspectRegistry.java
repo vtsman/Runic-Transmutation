@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 import net.minecraft.item.ItemStack;
-import vtsman.runicTrans.utils.colorUtils;
-import vtsman.runicTrans.utils.stackUtils;
+import vtsman.vtsmcUtil.ColorUtils;
+import vtsman.vtsmcUtil.StackUtils;
 
 public class AspectRegistry {
 	public static Map<Integer, List<AspectStack>[]> aspectMap = new HashMap<Integer, List<AspectStack>[]>();
@@ -30,7 +30,7 @@ public class AspectRegistry {
 	}
 
 	public static boolean allAspect(ItemStack[] in) {
-		ItemStack[] s = stackUtils.getNonNull(in);
+		ItemStack[] s = StackUtils.getNonNull(in);
 		int c = 0;
 		for (int i = 0; i < s.length; i++) {
 			if (getAspects(s[i]) != null) {
@@ -115,7 +115,7 @@ public class AspectRegistry {
 				r /= avgDiv;
 				g /= avgDiv;
 				b /= avgDiv;
-				return colorUtils.constColor(r, g, b);
+				return ColorUtils.constColor(r, g, b);
 			}
 		}
 		System.out.println("D:");

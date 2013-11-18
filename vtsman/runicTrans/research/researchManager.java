@@ -3,13 +3,18 @@ package vtsman.runicTrans.research;
 import java.util.HashMap;
 import java.util.Map;
 
+import cpw.mods.fml.common.network.PacketDispatcher;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.network.packet.Packet;
+import net.minecraft.network.packet.Packet250CustomPayload;
 import vtsman.runicTrans.aspect.Aspect;
 
 public class researchManager {
 	static research[] researches = new research[256];
 	static int i;
-	public static Map<EntityPlayer, boolean[]> playerResearches = new HashMap<EntityPlayer, boolean[]>();
+	public static Map<EntityPlayer, Integer> keyNew = new HashMap<EntityPlayer, Integer>();
+	public static Map<EntityPlayer, Integer> keyOld = new HashMap<EntityPlayer, Integer>();
+public static Map<EntityPlayer, boolean[]> playerResearches = new HashMap<EntityPlayer, boolean[]>();
 
 	public static int addResearch(research r) {
 		if (i < researches.length) {
@@ -25,7 +30,21 @@ public class researchManager {
 			researchFileHelper.setResearch(p, i, b[i]);
 		}
 	}
-
+	
+	public static boolean didSync(EntityPlayer p){
+		return !(keyNew.get(p) == (keyOld.get(p)));
+	}
+	
+	public static void syncPlayerResearch(EntityPlayer p){
+		if(keyNew.containsKey(p)){
+			keyNew.put(p, 0);
+		}
+		keyOld.put(p, keyNew.get(p));
+		Packet250CustomPayload packet = new Packet250CustomPayload();
+		packet.channel = "RuneAlchem RE CLI";
+		PacketDispatcher.sendPacketToServer(packet);
+	}
+	
 	public static researchProgress getInitResearch(Aspect[] a, EntityPlayer p) {
 		for (int j = 0; j < i; j++) {
 			research r = researches[j];

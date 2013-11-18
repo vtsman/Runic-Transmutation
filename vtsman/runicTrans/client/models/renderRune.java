@@ -24,7 +24,7 @@ public class renderRune extends TileEntitySpecialRenderer {
 		rotation++;
 		if(rotation == 360)rotation = 0;
 		// bindTextureByName("/vtsman/mine_modus/client/models/Node Table.png");
-		this.func_110628_a(new ResourceLocation("runetrans",
+		this.bindTexture(new ResourceLocation("runetrans",
 				"textures/models/" + tex[meta] + ".png")); // texture
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float) d + 0.5F, (float) d1 + 1.5F,

@@ -15,9 +15,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
-import vtsman.runicTrans.utils.stackUtils;
+import vtsman.vtsmcUtil.StackUtils;
 
-public class fireRod extends IChargable {
+public class fireRod extends Chargable {
 
 	public fireRod(int par1) {
 		super(par1);
@@ -42,7 +42,7 @@ public class fireRod extends IChargable {
 							.getSmeltingResult(s);
 					if (out != null) {
 						if (this.sub(10, stack)) {
-							if (stackUtils.hasBlock(out)) {
+							if (StackUtils.hasBlock(out)) {
 								world.setBlock(x, y, z, out.itemID,
 										out.getItemDamage(), 2);
 							} else {

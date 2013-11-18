@@ -1,7 +1,7 @@
 package vtsman.runicTrans.items.tools;
 
 import net.minecraft.item.ItemStack;
-import vtsman.runicTrans.items.IChargable;
+import vtsman.runicTrans.items.Chargable;
 
 public interface ISpecial {
 	boolean add(int i, ItemStack s);

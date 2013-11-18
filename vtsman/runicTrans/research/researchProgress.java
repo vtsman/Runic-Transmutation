@@ -8,7 +8,7 @@ import vtsman.runicTrans.aspect.Aspect;
 import vtsman.runicTrans.aspect.AspectRegistry;
 import vtsman.runicTrans.aspect.AspectStack;
 import vtsman.runicTrans.aspect.modAspects;
-import vtsman.runicTrans.utils.colorUtils;
+import vtsman.vtsmcUtil.ColorUtils;
 
 public class researchProgress {
 	int id;
@@ -77,7 +77,7 @@ public class researchProgress {
 				stacks.add(new AspectStack(modAspects.dark.id, 1));
 			}
 		}
-		return colorUtils.revLum(AspectRegistry.getColorFromAspects(stacks));
+		return ColorUtils.revLum(AspectRegistry.getColorFromAspects(stacks));
 	}
 
 	public static researchProgress getResearch(NBTTagCompound t) {

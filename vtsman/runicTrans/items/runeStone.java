@@ -2,20 +2,19 @@ package vtsman.runicTrans.items;
 
 import java.util.List;
 
-import vtsman.runicTrans.TE.IRelay;
-import vtsman.runicTrans.TE.transRuneTE;
-import vtsman.runicTrans.transmute.transmuteManager;
-import vtsman.runicTrans.utils.stackUtils;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import vtsman.runicTrans.TE.IRelay;
+import vtsman.runicTrans.TE.transRuneTE;
+import vtsman.runicTrans.transmute.transmuteManager;
+import vtsman.vtsmcUtil.StackUtils;
 
-public class runeStone extends IChargable {
+public class runeStone extends Chargable {
 
 	public runeStone(int par1) {
 		super(par1);
@@ -32,16 +31,15 @@ public class runeStone extends IChargable {
 		list.clear();
 		list.add("Rune Stone");
 		if (stack.getTagCompound() == null) {
-		stack.stackTagCompound = new NBTTagCompound();
+			stack.stackTagCompound = new NBTTagCompound();
 		}
-			if (!stack.getTagCompound().hasKey("cap")) {
-				stack.stackTagCompound.setInteger("cap", 0);
-			}
-			
-				list.add("The stone has "
-						+ stack.getTagCompound().getInteger("cap")
-						+ " out of 300 energy.");
+		if (!stack.getTagCompound().hasKey("cap")) {
+			stack.stackTagCompound.setInteger("cap", 0);
 		}
+
+		list.add("The stone has " + stack.getTagCompound().getInteger("cap")
+				+ " out of 300 energy.");
+	}
 
 	boolean iMode = false;
 
@@ -53,7 +51,6 @@ public class runeStone extends IChargable {
 			stack.getTagCompound().setInteger("cap", 0);
 		}
 		if (!world.isRemote) {
-			System.out.println("here");
 			TileEntity tile = world.getBlockTileEntity(x, y, z);
 			if (tile instanceof IRelay) {
 				player.addChatMessage("The stone seems to whipser to you");
@@ -120,7 +117,7 @@ public class runeStone extends IChargable {
 				if (st != null) {
 					int re = transmuteManager.getEnergy(s);
 					if (this.sub(re / 2, stack)) {
-						if (stackUtils.hasBlock(st)) {
+						if (StackUtils.hasBlock(st)) {
 							world.setBlock(x, y, z, st.itemID);
 							world.setBlockMetadataWithNotify(x, y, z,
 									st.getItemDamage(), 2);

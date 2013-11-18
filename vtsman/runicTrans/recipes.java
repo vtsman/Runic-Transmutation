@@ -57,9 +57,9 @@ public class recipes {
 							modBlocks.animBlock, 1, i), new ItemStack(
 							Block.glowStone, 1, 0));
 		}
-		GameRegistry.addShapedRecipe(new ItemStack(modBlocks.morter), "i i",
+		GameRegistry.addShapedRecipe(new ItemStack(modBlocks.mortar), "i i",
 				"sis", "sss", 'i', Item.ingotIron, 's', Block.stoneBrick);
-		GameRegistry.addShapedRecipe(new ItemStack(modBlocks.morter, 1, 1),
+		GameRegistry.addShapedRecipe(new ItemStack(modBlocks.mortar, 1, 1),
 				"hhh", "oio", "ooo", 'o', Block.obsidian, 'h',
 				modItems.hexmetal, 'i', modItems.infused);
 		GameRegistry.addShapedRecipe(new ItemStack(initTools.hoe), "mm", " s",

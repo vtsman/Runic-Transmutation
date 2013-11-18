@@ -72,37 +72,7 @@ public class forestAxe extends ItemAxe{
 	        }
 	        return getStrVsBlock(stack, block);
 	    }
-	    
-	    @Override
-	    public boolean func_111207_a(ItemStack itemstack, EntityPlayer player, EntityLivingBase entity)
-	    {
-	        if (entity.worldObj.isRemote)
-	        {
-	            return false;
-	        }
-	        if (entity instanceof IShearable)
-	        {
-	            IShearable target = (IShearable)entity;
-	            if (target.isShearable(itemstack, entity.worldObj, (int)entity.posX, (int)entity.posY, (int)entity.posZ))
-	            {
-	                ArrayList<ItemStack> drops = target.onSheared(itemstack, entity.worldObj, (int)entity.posX, (int)entity.posY, (int)entity.posZ,
-	                        EnchantmentHelper.getEnchantmentLevel(Enchantment.fortune.effectId, itemstack));
-
-	                Random rand = new Random();
-	                for(ItemStack stack : drops)
-	                {
-	                    EntityItem ent = entity.entityDropItem(stack, 1.0F);
-	                    ent.motionY += rand.nextFloat() * 0.05F;
-	                    ent.motionX += (rand.nextFloat() - rand.nextFloat()) * 0.1F;
-	                    ent.motionZ += (rand.nextFloat() - rand.nextFloat()) * 0.1F;
-	                }
-	                itemstack.damageItem(1, entity);
-	            }
-	            return true;
-	        }
-	        return false;
-	    }
-	    
+	    //TODO Redo all tools
 	    @Override
 	    public boolean onBlockStartBreak(ItemStack itemstack, int x, int y, int z, EntityPlayer player) 
 	    {

@@ -32,7 +32,7 @@ protected void drawGuiContainerBackgroundLayer(float par1, int par2,
             int par3) {
     //draw your Gui here, only thing you need to change is the path
     GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-    this.mc.func_110434_K().func_110577_a(new ResourceLocation("runetrans",
+    this.mc.getTextureManager().bindTexture(new ResourceLocation("runetrans",
 			"textures/gui/cent.png"));
     int x = (width - xSize) / 2;
     int y = (height - ySize) / 2;

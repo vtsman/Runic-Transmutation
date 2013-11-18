@@ -9,11 +9,11 @@ import org.lwjgl.opengl.GL11;
 
 import vtsman.runicTrans.TE.mortar;
 
-public class morterGui extends GuiContainer {
-	public morterGui(InventoryPlayer inventoryPlayer, mortar tileEntity) {
+public class mortarGui extends GuiContainer {
+	public mortarGui(InventoryPlayer inventoryPlayer, mortar tileEntity) {
 		// the container is instanciated and passed to the superclass for
 		// handling
-		super(new morterContainer(inventoryPlayer, tileEntity));
+		super(new mortarContainer(inventoryPlayer, tileEntity));
 	}
 
 	@Override
@@ -33,7 +33,7 @@ public class morterGui extends GuiContainer {
 			int par3) {
 		// draw your Gui here, only thing you need to change is the path
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		this.mc.func_110434_K().func_110577_a(
+		this.mc.getTextureManager().bindTexture(
 				new ResourceLocation("runetrans", "textures/gui/morter.png"));
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;

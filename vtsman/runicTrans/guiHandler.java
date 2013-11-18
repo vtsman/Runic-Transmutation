@@ -5,8 +5,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import vtsman.runicTrans.client.gui.centriContainer;
 import vtsman.runicTrans.client.gui.centriGui;
-import vtsman.runicTrans.client.gui.morterContainer;
-import vtsman.runicTrans.client.gui.morterGui;
+import vtsman.runicTrans.client.gui.mortarContainer;
+import vtsman.runicTrans.client.gui.mortarGui;
 import vtsman.runicTrans.client.gui.researchContainer;
 import vtsman.runicTrans.client.gui.researchGui;
 import cpw.mods.fml.common.network.IGuiHandler;
@@ -18,7 +18,7 @@ public class guiHandler implements IGuiHandler {
 		TileEntity te = world.getBlockTileEntity(x, y, z);
 		if (ID == baseMod.guiMorter
 				&& te instanceof vtsman.runicTrans.TE.mortar) {
-			return new morterContainer(player.inventory,
+			return new mortarContainer(player.inventory,
 					(vtsman.runicTrans.TE.mortar) te);
 		}
 		if (ID == baseMod.guiCentri
@@ -38,7 +38,7 @@ public class guiHandler implements IGuiHandler {
 		TileEntity te = world.getBlockTileEntity(x, y, z);
 		if (ID == baseMod.guiMorter
 				&& te instanceof vtsman.runicTrans.TE.mortar) {
-			return new morterGui(player.inventory,
+			return new mortarGui(player.inventory,
 					(vtsman.runicTrans.TE.mortar) te);
 		}
 		if (ID == baseMod.guiCentri

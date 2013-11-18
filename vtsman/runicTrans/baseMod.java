@@ -19,8 +19,8 @@ import cpw.mods.fml.common.network.NetworkMod.SidedPacketHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
 
 // For serverside packet handling
-@Mod(modid = "runeTrans", name = "Runic Alchemy", version = "1.1.0")
-@NetworkMod(channels = { "RuneAlchem TE", "RuneAlchem RE" }, clientSideRequired = true, serverSideRequired = false, clientPacketHandlerSpec = @SidedPacketHandler(channels = {
+@Mod(modid = "runeTrans", name = "Runic Alchemy", version = "1.2.4")
+@NetworkMod(channels = { "RuneAlchem TE", "RuneAlchem RE", "RuneAlchem RE CLI" }, clientSideRequired = true, serverSideRequired = false, clientPacketHandlerSpec = @SidedPacketHandler(channels = {
 		"RuneAlchem TE", "RuneAlchem RE" }, packetHandler = packetHandler.class))
 // For clientside packet handling
 public class baseMod { // The class file
@@ -38,7 +38,7 @@ public class baseMod { // The class file
 	public static int texBlock;
 	public static int pane;
 	public static int lumin;
-	public static int morter;
+	public static int mortar;
 	public static int resBlock;
 
 	public static int chalk;
@@ -94,7 +94,7 @@ public class baseMod { // The class file
 		pane = config.get("Block IDs", "Hexed Glass Pane: ", 757).getInt();
 		lumin = config.get("Block IDs", "Illuminated Animated Block: ", 758)
 				.getInt();
-		morter = config.get("Block IDs", "Mortar: ", 759).getInt();
+		mortar = config.get("Block IDs", "Mortar: ", 759).getInt();
 		resBlock = config.get("Block IDs", "Research Altar: ", 760).getInt();
 
 		chalk = config.get("Item IDs", "Chalky Dust: ", 700).getInt();
@@ -138,7 +138,7 @@ public class baseMod { // The class file
 	@EventHandler
 	public void Init(FMLInitializationEvent event) {
 		recipes.init();
-		proxy.addVillager();
+		// proxy.addVillager();
 		proxy.registerRenderInformation();
 		tabs.init();
 		recipe_mortar.init();

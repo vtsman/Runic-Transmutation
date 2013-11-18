@@ -10,12 +10,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import vtsman.runicTrans.TE.colorable;
+import vtsman.vtsmcUtil.ColorUtils;
 
 public class colorWand extends Item {
 	int color = 0xFFFFFF;
-	int r = 0xFF;
-	int g = 0xFF;
-	int b = 0xFF;
 
 	public colorWand(int par1) {
 		super(par1);
@@ -30,46 +28,37 @@ public class colorWand extends Item {
 		if (stack.getTagCompound() == null) {
 			stack.stackTagCompound = new NBTTagCompound();
 		}
-		if (!stack.getTagCompound().hasKey("r")) {
-			stack.stackTagCompound.setInteger("r", 0xFF);
+		if (!stack.getTagCompound().hasKey("color")) {
+			stack.stackTagCompound.setInteger("color", 0xFFFFFF);
 		}
-		if (!stack.getTagCompound().hasKey("g")) {
-			stack.stackTagCompound.setInteger("g", 0xFF);
-		}
-		if (!stack.getTagCompound().hasKey("b")) {
-			stack.stackTagCompound.setInteger("b", 0xFF);
-		}
-
-		list.add("Red: " + stack.stackTagCompound.getInteger("r"));
-		list.add("Green: " + stack.stackTagCompound.getInteger("g"));
-		list.add("Blue: " + stack.stackTagCompound.getInteger("b"));
+		int[] rgb = ColorUtils.splitColor(stack.stackTagCompound
+				.getInteger("color"));
+		int r = rgb[0];
+		int g = rgb[1];
+		int b = rgb[2];
+		list.add("Red: " + r);
+		list.add("Green: " + g);
+		list.add("Blue: " + b);
 	}
 
 	@Override
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world,
 			int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
 		TileEntity te = world.getBlockTileEntity(x, y, z);
-		player.addChatMessage(world.getBlockId(x, y, z) + ", "
-				+ world.getBlockMetadata(x, y, z));
 		if (te instanceof colorable) {
+
 			if (player.isSneaking()) {
+				int[] rgb = ColorUtils.splitColor(((colorable) te).color);
+				int r = rgb[0];
+				int g = rgb[1];
+				int b = rgb[2];
 				color = ((colorable) te).color;
-				r = ((colorable) te).r;
-				g = ((colorable) te).g;
-				b = ((colorable) te).b;
-				stack.stackTagCompound.setInteger("r", r);
-				stack.stackTagCompound.setInteger("g", g);
-				stack.stackTagCompound.setInteger("b", b);
+				stack.stackTagCompound.setInteger("color", color);
 			}
 
 			else {
-				r = stack.stackTagCompound.getInteger("r");
-				g = stack.stackTagCompound.getInteger("g");
-				b = stack.stackTagCompound.getInteger("b");
+				this.color = stack.stackTagCompound.getInteger("color");
 				((colorable) te).color = color;
-				((colorable) te).r = r;
-				((colorable) te).g = g;
-				((colorable) te).b = b;
 				world.markBlockForRenderUpdate(x, y, z);
 			}
 		}

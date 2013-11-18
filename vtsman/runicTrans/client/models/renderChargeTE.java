@@ -15,7 +15,7 @@ public class renderChargeTE extends TileEntitySpecialRenderer {
 			rotation = tile.getBlockMetadata();
 		}
 		// bindTextureByName("/vtsman/mine_modus/client/models/Node Table.png");
-		this.func_110628_a(new ResourceLocation("runetrans",
+		this.bindTexture(new ResourceLocation("runetrans",
 				"textures/models/chargeNode.png")); // texture
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float) d + 0.5F, (float) d1 + 1.5F,

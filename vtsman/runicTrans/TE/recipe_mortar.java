@@ -10,7 +10,8 @@ import net.minecraft.nbt.NBTTagCompound;
 import vtsman.runicTrans.aspect.AspectRegistry;
 import vtsman.runicTrans.items.mixedDust;
 import vtsman.runicTrans.items.modItems;
-import vtsman.runicTrans.utils.stackUtils;
+import vtsman.vtsmcUtil.MiscUtils;
+import vtsman.vtsmcUtil.StackUtils;
 
 public class recipe_mortar {
 	public static List<IMorter> recipes = new ArrayList<IMorter>();
@@ -28,11 +29,11 @@ public class recipe_mortar {
 		}
 
 		if (AspectRegistry.allAspect(stack)
-				&& stackUtils.getNonNull(stack).length != 0) {
+				&& StackUtils.getNonNull(stack).length != 0) {
 			ItemStack out = new ItemStack(modItems.mixDust, 1);
 			out.stackTagCompound = new NBTTagCompound();
-			ItemStack[] stacks = stackUtils
-					.setOne(stackUtils.getNonNull(stack));
+			ItemStack[] stacks = StackUtils.sizer(
+					(ItemStack[]) MiscUtils.getNonNull(stack), 1);
 			mixedDust.writeToNBT(out.stackTagCompound, stacks);
 
 			return out;

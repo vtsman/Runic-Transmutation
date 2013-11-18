@@ -102,7 +102,11 @@ public class packetHandler implements IPacketHandler {
 					}
 				}
 			}
-		} else {
+		}
+		else if(payload.channel == "RuneAlchem RE CLI"){
+			researchPacketHandler.sendPacket((EntityPlayer) player);
+		}
+		else {
 			researchPacketHandler.onPacketData(manager, payload, player);
 		}
 	}

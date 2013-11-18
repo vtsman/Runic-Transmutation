@@ -4,11 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import vtsman.runicTrans.utils.stackUtils;
-
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import vtsman.vtsmcUtil.StackUtils;
 
 public class transmuteManager {
 	public static HashMap<Integer, Integer[]> RE = new HashMap<Integer, Integer[]>();
@@ -45,7 +42,7 @@ public class transmuteManager {
 				for (int j = 0; j < REinv.get(
 						RE.get(i.itemID)[i.getItemDamage()]).size(); j++) {
 					stack = getNext(stack);
-					if (stackUtils.hasBlock(stack)) {
+					if (StackUtils.hasBlock(stack)) {
 						return stack;
 					}
 				}

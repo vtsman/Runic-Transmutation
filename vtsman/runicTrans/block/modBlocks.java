@@ -20,7 +20,7 @@ public class modBlocks {
 	public static Block texBlock;
 	public static Block pane;
 	public static Block lumin;
-	public static Block morter;
+	public static Block mortar;
 	public static Block rBlock;
 
 	// public static Block testPart = new particalBlock(1000, Material.air)
@@ -53,7 +53,7 @@ public class modBlocks {
 		lumin = new animBlocks1(baseMod.lumin).setUnlocalizedName("lumin1")
 				.setHardness(2f).setCreativeTab(tabs.tabPretties)
 				.setLightValue(1f);
-		morter = new mortar(baseMod.morter, Material.rock)
+		mortar = new mortar(baseMod.mortar, Material.rock)
 				.setUnlocalizedName("Mortar").setHardness(3f)
 				.setCreativeTab(tabs.tabRune);
 		// relay = new relay(baseMod.relay,
@@ -63,7 +63,7 @@ public class modBlocks {
 		GameRegistry.registerBlock(pane, "pane");
 		GameRegistry.registerBlock(rBlock, "rBlock");
 		GameRegistry.registerBlock(pulse, "pulserend");
-		GameRegistry.registerBlock(morter, iGlass.class, "Mortar");
+		GameRegistry.registerBlock(mortar, iGlass.class, "Mortar");
 		GameRegistry.registerBlock(texBlock, "texBlock");
 		// GameRegistry.registerBlock(testPart, "testPart");
 		GameRegistry.registerBlock(rune, "transmutation rune");
@@ -79,7 +79,7 @@ public class modBlocks {
 		MinecraftForge.setBlockHarvestLevel(pane, "Pickaxe", 2);
 		MinecraftForge.setBlockHarvestLevel(rBlock, "Pickaxe", 2);
 		MinecraftForge.setBlockHarvestLevel(lumin, "Pickaxe", 1);
-		MinecraftForge.setBlockHarvestLevel(morter, "Pickaxe", 1);
+		MinecraftForge.setBlockHarvestLevel(mortar, "Pickaxe", 1);
 		MinecraftForge.setBlockHarvestLevel(animBlock, "Pickaxe", 1);
 		// MinecraftForge.setBlockHarvestLevel(relay, "Pickaxe", 2);
 		LanguageRegistry.addName(pane, "Hexed Glass Pane");
@@ -104,8 +104,8 @@ public class modBlocks {
 			ItemStack stack = new ItemStack(lumin, 1, i);
 			LanguageRegistry.addName(stack.copy(), "Illuminated " + names[i]);
 		}
-		LanguageRegistry.addName(new ItemStack(morter, 1, 0), "Mortar");
-		LanguageRegistry.addName(new ItemStack(morter, 1, 1),
+		LanguageRegistry.addName(new ItemStack(mortar, 1, 0), "Mortar");
+		LanguageRegistry.addName(new ItemStack(mortar, 1, 1),
 				"Arcane Centrifuge");
 	}
 }

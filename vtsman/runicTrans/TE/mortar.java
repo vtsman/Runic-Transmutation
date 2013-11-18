@@ -1,6 +1,6 @@
 package vtsman.runicTrans.TE;
 
-import vtsman.runicTrans.client.gui.morterContainer;
+import vtsman.runicTrans.client.gui.mortarContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
@@ -12,7 +12,7 @@ import net.minecraft.tileentity.TileEntity;
 
 public class mortar extends TileEntity implements IInventory, ISidedInventory {
 	ItemStack[] inv = new ItemStack[7];
-	public morterContainer cont;
+	public mortarContainer cont;
 	public mortar() {
 
 	}
@@ -89,14 +89,6 @@ public class mortar extends TileEntity implements IInventory, ISidedInventory {
 	}
 
 	@Override
-	public void openChest() {
-	}
-
-	@Override
-	public void closeChest() {
-	}
-
-	@Override
 	public void readFromNBT(NBTTagCompound tagCompound) {
 		super.readFromNBT(tagCompound);
 
@@ -143,22 +135,6 @@ public class mortar extends TileEntity implements IInventory, ISidedInventory {
 		return "mod.vtsman_hodgecraft.shelfTE";
 	}
 
-	public boolean func_94042_c() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public boolean func_94041_b(int i, ItemStack itemstack) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean isInvNameLocalized() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 	@Override
 	public boolean isItemValidForSlot(int i, ItemStack itemstack) {
 		// TODO Auto-generated method stub
@@ -188,4 +164,22 @@ public class mortar extends TileEntity implements IInventory, ISidedInventory {
     {
         return par3 != 0 || par1 != 1;
     }
+
+	@Override
+	public boolean isInvNameLocalized() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void openChest() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void closeChest() {
+		// TODO Auto-generated method stub
+		
+	}
 }

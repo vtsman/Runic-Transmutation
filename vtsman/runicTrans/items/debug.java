@@ -18,8 +18,6 @@ public class debug extends Item {
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world,
 			int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
 		if (!world.isRemote) {
-			System.out.println(world.getBlockId(x, y, z) + ":"
-					+ world.getBlockMetadata(x, y, z));
 			TileEntity te = world.getBlockTileEntity(x, y, z);
 			if (te instanceof capacitorTE) {
 				((capacitorTE) te).add(100);
